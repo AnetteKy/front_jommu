@@ -19,7 +19,8 @@ export default {
   components: {AthleteHomeViewNavBar},
   data: function () {
     return {
-      loginInfo: this.$route.query.loginInfo
+      // loginInfo: this.$route.query.loginInfo
+
     }
   }
 }
