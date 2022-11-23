@@ -8,20 +8,21 @@
     </div>
     <div class="row justify-content-center m-3">
       <div class="input-group">
-        <input placeholder="Parool" type="password" class="form-control" aria-label="Sizing example input"
+        <input placeholder="Parool" type="password" class="form-control " aria-label="Sizing example input"
                aria-describedby="inputGroup-sizing-default" v-model="password">
       </div>
     </div>
-    <button v-on:click="trainerLogin" class="btn btn-primary" type="submit">Logi sisse</button>
+    <button v-on:click="athleteLogin" class="btn btn-success" type="submit">Logi sisse</button>
     <div class="row justify-content-center">
       <label class="mt-5">Ei oma veel kontot?</label>
-      <button type="button" class="btn btn-secondary btn-sm">Registreeri</button>
+      <button type="button" class="btn btn-secondary btn-sm w-25">Registreeri</button>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'TrainerLogin',
+  name: 'AthleteLogin',
+
   data: function () {
     return {
       username: '',
@@ -40,17 +41,19 @@ export default {
   },
 
   methods: {
-    trainerLogin: function () {
+    athleteLogin: function () {
       this.$http.get("/login", {
             params: {
               username: this.username,
               password: this.password,
-              roleType: 'Treener'
+              roleType: 'Treenitav'
             }
           }
       ).then(response => {
         this.loginInfo = response.data
-        this.$router.push({name: 'trainerHomeRoute'})
+        this.$router.push({name: 'athleteHomeRoute', query: {
+          username: this.username
+        }})
         console.log(response.data)
       }).catch(error => {
         console.log(error)

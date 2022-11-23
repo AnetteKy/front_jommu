@@ -3,7 +3,7 @@
   <AthleteHomeViewNavBar/>
 
   <div>
-    <h1>Tere tulemast, {{firstName}}</h1>
+    <h1>Tere tulemast, {{username}}</h1>
     <br>
     <h4>Päevatsitaat: "Fitness - if it came in a bottle, everybody would have a great body."</h4>
   </div>
@@ -20,6 +20,7 @@ export default {
   data: function () {
     return {
       // loginInfo: this.$route.query.loginInfo
+      username: this.$route.query.username
 
     }
   }

@@ -1,37 +1,30 @@
 <template>
-  <div>
+    <div class="container d-flex justify-content-around align-items-center">
+            <div class="row d-flex flex-grow-1">
 
-    <div class="container">
-      <!--      <div class="row m-5"></div>-->
-      <!--      <div class="row m-5"></div>-->
-      <!--      <div class="row m-5"></div>-->
-      <div class="row justify-content-center">
+              <div class="col m-5">
+                <button v-on:click="displayTrainerLoginOnClick" type="button" class="btn btn-outline-primary">TREENER</button>
 
-        <div class="col col-lg-2 m-5">
-          <button v-on:click="displayTrainerLoginOnClick" type="button" class="btn btn-outline-primary">TREENER</button>
+                <TrainerLogin v-if="displayTrainerLogin"/>
 
-          <TrainerLogin v-if="displayTrainerLogin"/>
+              </div>
 
-        </div>
+              <div class="col m-5">
+                <button v-on:click="displayAthleteLoginOnClick" type="button" class="btn btn-outline-success">TREENITAV</button>
 
-        <div class="col col-lg-2 m-5">
-          <button v-on:click="displayAthleteLoginOnClick" type="button" class="btn btn-outline-success">TREENITAV</button>
+                <AthleteLogin v-if="displayAthleteLogin"/>
 
-          <AthleteLogin v-if="displayAthleteLogin"/>
+              </div>
 
-        </div>
-
-      </div>
+            </div>
     </div>
-
-  </div>
 </template>
 
 <script>
 // @ is an alias to /src
 
-import TrainerLogin from "@/components/TrainerLogin";
-import AthleteLogin from "@/components/AthleteLogin";
+import TrainerLogin from "@/components/Login/TrainerLogin";
+import AthleteLogin from "@/components/Login/AthleteLogin";
 
 export default {
   name: 'HomeView',

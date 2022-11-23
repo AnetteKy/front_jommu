@@ -1,6 +1,9 @@
 <template>
 <div>
   <TrainerHomeViewNavBar/>
+  <div>
+    <h1>Tere tulemast, {{username}}</h1>
+  </div>
 
 </div>
 </template>
@@ -13,7 +16,9 @@ export default {
   components: {TrainerHomeViewNavBar},
   data: function () {
     return {
-      loginInfo: this.$route.query.loginInfo
+      // loginInfo: this.$route.query.loginInfo
+      username: this.$route.query.username
+
     }
   }
 }

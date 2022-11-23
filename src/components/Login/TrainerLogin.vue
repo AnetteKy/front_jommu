@@ -12,17 +12,16 @@
                aria-describedby="inputGroup-sizing-default" v-model="password">
       </div>
     </div>
-    <button v-on:click="athleteLogin" class="btn btn-success" type="submit">Logi sisse</button>
+    <button v-on:click="trainerLogin" class="btn btn-primary" type="submit">Logi sisse</button>
     <div class="row justify-content-center">
       <label class="mt-5">Ei oma veel kontot?</label>
-      <button type="button" class="btn btn-secondary btn-sm">Registreeri</button>
+      <button type="button" class="btn btn-secondary btn-sm w-25">Registreeri</button>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'AthleteLogin',
-
+  name: 'TrainerLogin',
   data: function () {
     return {
       username: '',
@@ -41,17 +40,19 @@ export default {
   },
 
   methods: {
-    athleteLogin: function () {
+    trainerLogin: function () {
       this.$http.get("/login", {
             params: {
               username: this.username,
               password: this.password,
-              roleType: 'Treenitav'
+              roleType: 'Treener'
             }
           }
       ).then(response => {
         this.loginInfo = response.data
-        this.$router.push({name: 'athleteHomeRoute'})
+        this.$router.push({name: 'trainerHomeRoute', query: {
+            username: this.username
+          }})
         console.log(response.data)
       }).catch(error => {
         console.log(error)
