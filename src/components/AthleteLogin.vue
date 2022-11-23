@@ -12,7 +12,7 @@
                aria-describedby="inputGroup-sizing-default">
       </div>
     </div>
-    <button class="btn btn-success" type="submit">Logi sisse</button>
+    <button v-on:click="athleteLogin" class="btn btn-success" type="submit">Logi sisse</button>
     <div class="row justify-content-center">
       <label class="mt-5">Ei oma veel kontot?</label>
       <button type="button" class="btn btn-secondary btn-sm">Registreeri</button>
@@ -21,6 +21,42 @@
 </template>
 <script>
 export default {
-  name: 'AthleteLogin'
+  name: 'AthleteLogin',
+
+  data: function () {
+    return {
+      username: '',
+      password: '',
+      errorMessage: '',
+      loginInfo: {
+        userId: '',
+        roles: [
+          {
+            roleType: ''
+          }
+        ]
+
+      }
+    }
+  },
+
+  methods: {
+    athleteLogin: function () {
+      this.$http.get("/login", {
+            params: {
+              username: this.username,
+              password: this.password
+            }
+          }
+      ).then(response => {
+        this.loginInfo = response.data
+        this.$router.push({name: 'athleteHomeRoute'})
+        console.log(response.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+  }
+
 }
 </script>
