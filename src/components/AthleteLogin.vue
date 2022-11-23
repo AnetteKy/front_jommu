@@ -3,13 +3,13 @@
     <div class="row justify-content-center m-3">
       <div class="input-group">
         <input placeholder="Kasutajanimi" type="text" class="form-control" aria-label="Sizing example input"
-               aria-describedby="inputGroup-sizing-default">
+               aria-describedby="inputGroup-sizing-default" v-model="username">
       </div>
     </div>
     <div class="row justify-content-center m-3">
       <div class="input-group">
         <input placeholder="Parool" type="password" class="form-control" aria-label="Sizing example input"
-               aria-describedby="inputGroup-sizing-default">
+               aria-describedby="inputGroup-sizing-default" v-model="password">
       </div>
     </div>
     <button v-on:click="athleteLogin" class="btn btn-success" type="submit">Logi sisse</button>
@@ -42,7 +42,7 @@ export default {
 
   methods: {
     athleteLogin: function () {
-      this.$http.get("/login", {
+      this.$http.get("/athlete/login", {
             params: {
               username: this.username,
               password: this.password

@@ -12,18 +12,16 @@
 </template>
 
 <script>
-import AthleteHomeViewNavBar from "@/views/AthleteHomeViewNavBar";
+import AthleteHomeViewNavBar from "@/components/navbar/AthleteHomeViewNavBar";
 
 export default {
   name: "AthleteHomeView",
   components: {AthleteHomeViewNavBar},
-
   data: function () {
     return {
       loginInfo: this.$route.query.loginInfo
     }
   }
-
 }
 </script>
 
