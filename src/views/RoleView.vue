@@ -3,14 +3,14 @@
             <div class="row d-flex flex-grow-1">
 
               <div class="col m-5">
-                <button v-on:click="displayTrainerLoginOnClick" type="button" class="btn btn-outline-primary">TREENER</button>
+                <button v-on:click="displayTrainerLoginOnClick" type="button" class="btn btn-outline-primary btn-lg">TREENER</button>
 
                 <TrainerLogin v-if="displayTrainerLogin"/>
 
               </div>
 
               <div class="col m-5">
-                <button v-on:click="displayAthleteLoginOnClick" type="button" class="btn btn-outline-success">TREENITAV</button>
+                <button v-on:click="displayAthleteLoginOnClick" type="button" class="btn btn-outline-success btn-lg">TREENITAV</button>
 
                 <AthleteLogin v-if="displayAthleteLogin"/>
 

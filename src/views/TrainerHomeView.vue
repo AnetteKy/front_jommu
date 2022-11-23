@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="d-flex flex-grow-1 flex-column flex">
   <TrainerHomeViewNavBar/>
   <div>
     <h1>Tere tulemast, {{username}}</h1>

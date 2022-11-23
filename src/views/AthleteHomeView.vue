@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="d-flex flex-grow-1 flex-column">
   <AthleteHomeViewNavBar/>
 
   <div>

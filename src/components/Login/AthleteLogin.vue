@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="row justify-content-center m-3">
-      <div class="input-group">
+      <div class="input-group w-50">
         <input placeholder="Kasutajanimi" type="text" class="form-control" aria-label="Sizing example input"
                aria-describedby="inputGroup-sizing-default" v-model="username">
       </div>
     </div>
     <div class="row justify-content-center m-3">
-      <div class="input-group">
+      <div class="input-group w-50">
         <input placeholder="Parool" type="password" class="form-control " aria-label="Sizing example input"
                aria-describedby="inputGroup-sizing-default" v-model="password">
       </div>
