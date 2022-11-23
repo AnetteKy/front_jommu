@@ -42,10 +42,11 @@ export default {
 
   methods: {
     athleteLogin: function () {
-      this.$http.get("/athlete/login", {
+      this.$http.get("/login", {
             params: {
               username: this.username,
-              password: this.password
+              password: this.password,
+              roleType: 'Treenitav'
             }
           }
       ).then(response => {

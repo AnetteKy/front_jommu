@@ -41,10 +41,11 @@ export default {
 
   methods: {
     trainerLogin: function () {
-      this.$http.get("/trainer/login", {
+      this.$http.get("/login", {
             params: {
               username: this.username,
-              password: this.password
+              password: this.password,
+              roleType: 'Treener'
             }
           }
       ).then(response => {
