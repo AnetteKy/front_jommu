@@ -33,8 +33,8 @@
 <script>
 // @ is an alias to /src
 
-import TrainerLogin from "@/components/Login/TrainerLogin";
-import AthleteLogin from "@/components/Login/AthleteLogin";
+import TrainerLogin from "@/components/login/TrainerLogin";
+import AthleteLogin from "@/components/login/AthleteLogin";
 
 export default {
   name: 'HomeView',
