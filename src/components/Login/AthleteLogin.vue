@@ -46,7 +46,7 @@ export default {
             params: {
               username: this.username,
               password: this.password,
-              roleType: 'Treenitav'
+              roleType: 'Treenija'
             }
           }
       ).then(response => {
