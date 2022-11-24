@@ -10,7 +10,7 @@
               </div>
 
               <div class="col m-5">
-                <button v-on:click="displayAthleteLoginOnClick" type="button" class="btn btn-outline-success btn-lg">TREENITAV</button>
+                <button v-on:click="displayAthleteLoginOnClick" type="button" class="btn btn-outline-success btn-lg">TREENIJA</button>
 
                 <AthleteLogin v-if="displayAthleteLogin"/>
 
