@@ -50,6 +50,7 @@ export default {
   methods: {
     displayTrainerLoginOnClick: function () {
       this.displayTrainerLogin = true
+
     },
     displayAthleteLoginOnClick: function () {
       this.displayAthleteLogin = true
