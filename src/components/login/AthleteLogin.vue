@@ -18,7 +18,7 @@
     <button v-on:click="athleteLogin" class="btn btn-success" type="submit">Logi sisse</button>
     <div class="row justify-content-center">
       <label class="mt-5">Ei oma veel kontot?</label>
-      <button type="button" class="btn btn-secondary btn-sm w-25">Registreeri</button>
+      <button v-on:click="athleteRegister" type="button" class="btn btn-secondary btn-sm w-25">Registreeri</button>
     </div>
   </div>
 </template>
@@ -46,6 +46,11 @@ export default {
   },
 
   methods: {
+
+    athleteRegister: function () {
+      this.$router.push({name: 'registerRoute'})
+    },
+
     athleteLogin: function () {
       this.errorResponse.message = ''
       if (this.username.length === 0 || this.password.length === 0) {

@@ -15,7 +15,7 @@
     <button v-on:click="trainerLogin" class="btn btn-primary" type="submit">Logi sisse</button>
     <div class="row justify-content-center">
       <label class="mt-5">Ei oma veel kontot?</label>
-      <button type="button" class="btn btn-secondary btn-sm w-25">Registreeri</button>
+      <button v-on:click="trainerRegister" type="button" class="btn btn-secondary btn-sm w-25">Registreeri</button>
     </div>
   </div>
 </template>
@@ -40,6 +40,11 @@ export default {
   },
 
   methods: {
+
+    trainerRegister: function () {
+      this.$router.push({name: 'registerRoute'})
+    },
+
     trainerLogin: function () {
       this.$http.get("/login", {
             params: {
