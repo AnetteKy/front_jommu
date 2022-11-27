@@ -20,8 +20,8 @@ export default {
   data: function () {
     return {
       // loginInfo: this.$route.query.loginInfo
-      username: this.$route.query.username
-
+      // username: this.$route.query.username
+        username: sessionStorage.getItem('username')
     }
   }
 }

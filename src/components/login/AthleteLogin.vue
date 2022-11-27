@@ -61,11 +61,8 @@ export default {
             }
         ).then(response => {
           this.loginResponse = response.data
-          this.$router.push({
-            name: 'athleteHomeRoute', query: {
-              username: this.username
-            }
-          })
+          sessionStorage.setItem('username', this.username)
+          this.$router.push({name: 'athleteHomeRoute'})
           console.log(response.data)
         }).catch(error => {
           this.errorResponse = error.response.data
