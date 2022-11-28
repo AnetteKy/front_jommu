@@ -12,7 +12,7 @@
                aria-describedby="inputGroup-sizing-default" v-model="password">
       </div>
     </div>
-    <AlertError :error_response="errorResponse"/>
+    <AlertError :error_response="errorResponse" />
     <button v-on:click="trainerLogin" class="btn btn-primary" type="submit">Logi sisse</button>
     <div class="row justify-content-center">
       <label class="mt-5">Ei oma veel kontot?</label>
