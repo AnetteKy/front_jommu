@@ -12,7 +12,9 @@
                aria-describedby="inputGroup-sizing-default" v-model="password">
       </div>
     </div>
-    <AlertError :error_response="errorResponse" />
+
+    <AlertError :error-response="errorResponse"/>
+
     <button v-on:click="trainerLogin" class="btn btn-primary" type="submit">Logi sisse</button>
     <div class="row justify-content-center">
       <label class="mt-5">Ei oma veel kontot?</label>
@@ -63,11 +65,8 @@ export default {
             }
         ).then(response => {
           this.loginResponse = response.data
-          this.$router.push({
-            name: 'trainerHomeRoute', query: {
-              username: this.username
-            }
-          })
+          sessionStorage.setItem('username', this.username)
+          this.$router.push({name: 'trainerHomeRoute'})
           console.log(response.data)
         }).catch(error => {
           this.errorResponse = error.response.data
