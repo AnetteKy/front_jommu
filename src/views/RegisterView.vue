@@ -35,7 +35,7 @@
       </div>
 
       <div>
-        <select v-on:change="clickSelectedRoleEvent" class="form-select mb-3" aria-label="Default select example">
+        <select class="form-select mb-3" aria-label="Default select example">
           <option selected disabled>{{this.selectedRole}}</option>
           <option v-for="role in roles" :key="role.roleId" :value="role.roleId">{{ role.roleType }}</option>
 
@@ -117,6 +117,8 @@ export default {
         roleType: ''
       },
 
+      // selectedRoleIdFromDropdown: 0,
+
       roles: [
         {
           roleId: 0,
@@ -130,17 +132,14 @@ export default {
     registerUser: function () {
 
       if (this.selectedRole === 'Treener') {
+        sessionStorage.setItem('username', this.userRequest.username)
         this.$router.push({name: 'trainerHomeRoute'});
       } else {
+        sessionStorage.setItem('username', this.userRequest.username)
         this.$router.push({name: 'athleteHomeRoute'})
       }
 
-      // if (this.registerResponse.roleType === 'Treener') {
-      //   this.$router.push({name: 'trainerHomeRoute'});
-      // } else {
-      //   this.$router.push({name: 'athleteHomeRoute'})
-      //
-      // }
+
       this.$http.post("/register", this.userRequest
       ).then(response => {
         console.log(response.data)
@@ -161,10 +160,10 @@ export default {
     },
 
     // clickSelectedRoleEvent: function () {
-    //   if (this.roles[0]) {
-    //     this.$router.push({name: 'trainerHomeRoute'});
+    //   if (this.selectedRoleIdFromDropdown === 1) {
+    //     sessionStorage.setItem('roleType', 'Treenija')
     //   } else {
-    //     this.$router.push({name: 'athleteHomeRoute'})
+    //     sessionStorage.setItem('roleType', 'Treener')
     //   }
     // }
   },
