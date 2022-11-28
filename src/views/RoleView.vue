@@ -52,12 +52,12 @@ export default {
   methods: {
     displayTrainerLoginOnClick: function () {
       this.displayTrainerLogin = true
-      sessionStorage.setItem('trainer', this.trainer)
+      sessionStorage.setItem('roletype', this.trainer)
 
     },
     displayAthleteLoginOnClick: function () {
       this.displayAthleteLogin = true
-      sessionStorage.setItem('athlete', this.athlete)
+      sessionStorage.setItem('roletype', this.athlete)
     }
   }
 
