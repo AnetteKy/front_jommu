@@ -20,6 +20,12 @@
                aria-describedby="inputGroup-sizing-default">
       </div>
 
+
+
+
+
+
+
       <div class="form-check" v-for="singleGender in genders">
         <input v-model="userRequest.gender" v-bind:value="singleGender.code" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
         <label class="form-check-label" for="flexRadioDefault1">
@@ -28,19 +34,31 @@
       </div>
 
 
+
+
+
+
+
+
+
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">E-mail</span>
         <input v-model="userRequest.email" type="text" class="form-control" aria-label="Sizing example input"
                aria-describedby="inputGroup-sizing-default">
       </div>
 
+
+
+
       <div>
-        <select class="form-select mb-3" aria-label="Default select example">
+        <select v-on:change="clickSelectedRoleEvent" v-model="selectedRoleIdFromDropdown" class="form-select mb-3" aria-label="Default select example">
           <option selected disabled>{{this.selectedRole}}</option>
           <option v-for="role in roles" :key="role.roleId" :value="role.roleId">{{ role.roleType }}</option>
 
         </select>
       </div>
+
+
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">Kasutajanimi</span>
@@ -84,12 +102,12 @@ export default {
 
       selectedRole: sessionStorage.getItem('roletype'),
 
-      roleTypes: [
-        {
-          roleId: 0,
-          roleType: ''
-        }
-      ],
+      // roleTypes: [
+      //   {
+      //     roleId: 0,
+      //     roleType: ''
+      //   }
+      // ],
 
       genders: [
         {
@@ -117,7 +135,7 @@ export default {
         roleType: ''
       },
 
-      // selectedRoleIdFromDropdown: 0,
+      selectedRoleIdFromDropdown: 0,
 
       roles: [
         {
@@ -130,7 +148,6 @@ export default {
   methods: {
 
     registerUser: function () {
-
       if (this.selectedRole === 'Treener') {
         sessionStorage.setItem('username', this.userRequest.username)
         this.$router.push({name: 'trainerHomeRoute'});
@@ -142,6 +159,7 @@ export default {
 
       this.$http.post("/register", this.userRequest
       ).then(response => {
+
         console.log(response.data)
       }).catch(error => {
         console.log(error)
@@ -159,13 +177,13 @@ export default {
           })
     },
 
-    // clickSelectedRoleEvent: function () {
-    //   if (this.selectedRoleIdFromDropdown === 1) {
-    //     sessionStorage.setItem('roleType', 'Treenija')
-    //   } else {
-    //     sessionStorage.setItem('roleType', 'Treener')
-    //   }
-    // }
+    clickSelectedRoleEvent: function () {
+      if (this.selectedRoleIdFromDropdown === 1) {
+        sessionStorage.setItem('roleType', this.roleTypes.roleType)
+      } else {
+        sessionStorage.setItem('roleType', 'Treenija')
+      }
+    }
   },
 
   beforeMount() {
