@@ -44,20 +44,18 @@ export default {
     return {
       displayTrainerLogin: false,
       displayAthleteLogin: false,
-      athlete: 'Treenija',
-      trainer: 'Treener'
     }
   },
 
   methods: {
     displayTrainerLoginOnClick: function () {
       this.displayTrainerLogin = true
-      sessionStorage.setItem('roletype', this.trainer)
+
 
     },
     displayAthleteLoginOnClick: function () {
       this.displayAthleteLogin = true
-      sessionStorage.setItem('roletype', this.athlete)
+
     }
   }
 

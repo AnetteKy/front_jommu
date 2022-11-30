@@ -6,6 +6,9 @@
                aria-describedby="inputGroup-sizing-default" v-model="username">
       </div>
     </div>
+
+    <AlertError :error-response="errorResponse"/>
+
     <div class="row justify-content-center m-3">
       <div class="input-group w-50">
         <input placeholder="Parool" type="password" class="form-control" aria-label="Sizing example input"
@@ -20,21 +23,24 @@
   </div>
 </template>
 <script>
+import AlertError from "@/components/alert/AlertError";
+
 export default {
   name: 'TrainerLogin',
+  components: {AlertError},
   data: function () {
     return {
       username: '',
       password: '',
-      errorMessage: '',
-      loginInfo: {
-        userId: '',
-        roles: [
-          {
-            roleType: ''
-          }
-        ]
 
+      loginResponse: {
+        userId: '',
+        roleId: 0,
+        roleType: ''
+      },
+      errorResponse: {
+        message: '',
+        errorCode: 0
       }
     }
   },
@@ -42,25 +48,34 @@ export default {
   methods: {
 
     trainerRegister: function () {
+      sessionStorage.setItem('roleId', 1)
       this.$router.push({name: 'registerRoute'})
     },
 
     trainerLogin: function () {
-      this.$http.get("/login", {
-            params: {
-              username: this.username,
-              password: this.password,
-              roleType: 'Treener'
+      sessionStorage.setItem('roleId', 1)
+
+      this.errorResponse.message = ''
+      if (this.username.length === 0 || this.password.length === 0) {
+        this.errorResponse.message = 'Palun täida kõik väljad';
+      } else {
+
+        this.$http.get("/login", {
+              params: {
+                username: this.username,
+                password: this.password,
+                roleType: 'Treener'
+              }
             }
-          }
-      ).then(response => {
-        this.loginInfo = response.data
-        sessionStorage.setItem('username', this.username)
-        this.$router.push({name: 'trainerHomeRoute'})
-        console.log(response.data)
-      }).catch(error => {
-        console.log(error)
-      })
+        ).then(response => {
+          this.loginResponse = response.data
+          sessionStorage.setItem('username', this.username)
+          this.$router.push({name: 'trainerHomeRoute'})
+          console.log(response.data)
+        }).catch(error => {
+          this.errorResponse = error.response.data
+        })
+      }
     },
   }
 

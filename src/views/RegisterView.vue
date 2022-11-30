@@ -4,19 +4,19 @@
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">Eesnimi</span>
-        <input v-model="userRequest.firstName" type="text" class="form-control" aria-label="Sizing example input"
+        <input v-model="registerRequest.firstName" type="text" class="form-control" aria-label="Sizing example input"
                aria-describedby="inputGroup-sizing-default">
       </div>
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">Perekonnanimi</span>
-        <input v-model="userRequest.lastName" type="text" class="form-control" aria-label="Sizing example input"
+        <input v-model="registerRequest.lastName" type="text" class="form-control" aria-label="Sizing example input"
                aria-describedby="inputGroup-sizing-default">
       </div>
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">Sünniaeg</span>
-        <input v-model="userRequest.dateOfBirth" type="date" class="form-control" aria-label="Sizing example input"
+        <input v-model="registerRequest.dateOfBirth" type="date" class="form-control" aria-label="Sizing example input"
                aria-describedby="inputGroup-sizing-default">
       </div>
 
@@ -27,7 +27,7 @@
 
 
       <div class="form-check" v-for="singleGender in genders">
-        <input v-model="userRequest.gender" v-bind:value="singleGender.code" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <input v-model="registerRequest.gender" v-bind:value="singleGender.code" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
         <label class="form-check-label" for="flexRadioDefault1">
           {{singleGender.description}}
         </label>
@@ -43,7 +43,7 @@
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">E-mail</span>
-        <input v-model="userRequest.email" type="text" class="form-control" aria-label="Sizing example input"
+        <input v-model="registerRequest.email" type="text" class="form-control" aria-label="Sizing example input"
                aria-describedby="inputGroup-sizing-default">
       </div>
 
@@ -51,9 +51,9 @@
 
 
       <div>
-        <select class="form-select mb-3" aria-label="Default select example">
-          <option v-model:selected="selectedRoleType"></option>
-          <option v-for="role in roleTypes" :key="role.roleId" :value="role.roleId">{{ role.roleType }}</option>
+        <select v-model="registerRequest.roleId" class="form-select mb-3" aria-label="Default select example">
+          <option selected disabled>vali roll</option>
+          <option v-for="role in roles" :key="role.roleId" :value="role.roleId">{{ role.roleType }}</option>
 
         </select>
       </div>
@@ -62,24 +62,24 @@
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">Kasutajanimi</span>
-        <input v-model="userRequest.username" type="text" class="form-control" aria-label="Sizing example input"
+        <input v-model="registerRequest.username" type="text" class="form-control" aria-label="Sizing example input"
                aria-describedby="inputGroup-sizing-default">
       </div>
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">Parool</span>
-        <input v-model="userRequest.password" type="password" class="form-control" aria-label="Sizing example input"
+        <input v-model="registerRequest.password" type="password" class="form-control" aria-label="Sizing example input"
                aria-describedby="inputGroup-sizing-default">
       </div>
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">Parool uuesti</span>
-        <input v-model="userRequest.password" type="password" class="form-control" aria-label="Sizing example input"
+        <input v-model="registerRequest.password" type="password" class="form-control" aria-label="Sizing example input"
                aria-describedby="inputGroup-sizing-default">
       </div>
 
       <div class="form-check">
-        <input v-model="userRequest.termsAccept" class="form-check-input" type="checkbox" value=""
+        <input v-model="registerRequest.termsAccept" class="form-check-input" type="checkbox" value=""
                id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
           Olen kasutajatingimustega nõus
@@ -100,10 +100,6 @@ export default {
   data: function () {
     return {
 
-      // athlete: sessionStorage.getItem('athlete'),
-      // trainer: sessionStorage.getItem('trainer'),
-
-
       genders: [
         {
           code: 'F',
@@ -114,24 +110,20 @@ export default {
           description: 'Mees'
         }
       ],
-
-      userRequest: {
+      registerRequest: {
         firstName: '',
         lastName: '',
         dateOfBirth: '',
         gender: 'F',
+        roleId: Number(sessionStorage.getItem('roleId')),
         email: '',
-        termsAccept: '',
+        termsAccept: false,
         username: '',
         password: '',
       },
       registerResponse: {
         userId: 0,
-        roleId: 0,
-        roleType: ''
       },
-
-      selectedRoleIdFromDropdown: 0,
 
       roles: [
         {
@@ -143,31 +135,43 @@ export default {
   },
   methods: {
 
-    selectedRoleType: function () {
-      if (sessionStorage.getItem('athlete')) {
-        return this.athlete;
-      } else {
-        return this.trainer
-      }
-
-    },
-
     registerUser: function () {
 
-      if (this.registerResponse.roleType === 'Treener') {
-        this.$router.push({name: 'trainerHomeRoute'});
-      } else {
-        this.$router.push({name: 'athleteHomeRoute'})
-
-      }
-
-      this.$http.post("/register", this.userRequest
+      this.$http.post("/register", this.registerRequest
       ).then(response => {
+        this.navigateToNextPage()
         console.log(response.data)
       }).catch(error => {
         console.log(error)
-      })
+      });
     },
+
+    navigateToNextPage: function () {
+      sessionStorage.setItem('username', this.registerRequest.username)
+      sessionStorage.setItem('userId', this.registerResponse.userId)
+      if (this.registerRequest.roleId === 1) {
+        this.$router.push({name: 'trainerHomeRoute'});
+      } else {
+        this.$router.push({name: 'athleteHomeRoute'})
+      }
+
+    },
+
+
+    getRolesDropdownInfo: function () {
+      this.$http.get("/role")
+          .then(response => {
+            this.roles = response.data
+            console.log(response.data)
+          })
+          .catch(error => {
+            console.log(error)
+          })
+    },
+  },
+
+  beforeMount() {
+    this.getRolesDropdownInfo()
   }
 }
 </script>

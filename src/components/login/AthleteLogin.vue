@@ -48,10 +48,12 @@ export default {
   methods: {
 
     athleteRegister: function () {
+      sessionStorage.setItem('roleId', 2)
       this.$router.push({name: 'registerRoute'})
     },
 
     athleteLogin: function () {
+      sessionStorage.setItem('roleId', 2)
       this.errorResponse.message = ''
       if (this.username.length === 0 || this.password.length === 0) {
         this.errorResponse.message = 'Palun täida kõik väljad';
