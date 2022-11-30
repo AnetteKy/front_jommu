@@ -7,14 +7,15 @@
       </div>
     </div>
 
-    <AlertError :error-response="errorResponse"/>
-
     <div class="row justify-content-center m-3">
       <div class="input-group w-50">
         <input placeholder="Parool" type="password" class="form-control" aria-label="Sizing example input"
                aria-describedby="inputGroup-sizing-default" v-model="password">
       </div>
     </div>
+
+    <AlertError :error-response="errorResponse"/>
+
     <button v-on:click="trainerLogin" class="btn btn-primary" type="submit">Logi sisse</button>
     <div class="row justify-content-center">
       <label class="mt-5">Ei oma veel kontot?</label>
