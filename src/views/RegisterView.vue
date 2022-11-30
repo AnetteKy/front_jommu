@@ -42,7 +42,7 @@
 
       <div>
         <select class="form-select mb-3" aria-label="Default select example">
-          <option v-model:selected="selectedRoleType"></option>
+          <option v-model:selected="selectedRoleType">siia tuleb info nupult</option>
           <option v-for="role in roleTypes" :key="role.roleId" :value="role.roleId">{{ role.roleType }}</option>
 
         </select>
@@ -82,13 +82,13 @@
 
 <script>
 export default {
-  name: "RegisterView",
+  name: 'RegisterView',
 
   data: function () {
     return {
 
-      // athlete: sessionStorage.getItem('athlete'),
-      // trainer: sessionStorage.getItem('trainer'),
+      athlete: sessionStorage.getItem('athlete'),
+      trainer: sessionStorage.getItem('trainer'),
 
 
       roleTypes: [
