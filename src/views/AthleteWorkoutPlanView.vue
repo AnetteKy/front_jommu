@@ -27,7 +27,7 @@
 
 import AthleteNavBar from "@/components/navbar/AthleteNavBar";
 import Logout from "@/views/Logout";
-import AthleteWorkoutPlanTable from "@/views/AthleteWorkoutPlanTable";
+import AthleteWorkoutPlanTable from "@/components/AthleteWorkoutPlanTable/AthleteWorkoutPlanTable";
 
 export default {
   name: "AthleteWorkoutPlanView",
