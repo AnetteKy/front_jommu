@@ -3,7 +3,7 @@
     <nav>
       <router-link to="/athlete/home">Kodu</router-link>
       |
-      <router-link to="/">Treeningkava</router-link>
+      <router-link to="/athlete/workoutplan">Treeningkava</router-link>
       |
       <router-link to="/">Ajalugu</router-link>
       |
@@ -14,6 +14,6 @@
 </template>
 <script>
 export default {
-  name: 'AthleteHomeViewNavBar'
+  name: 'AthleteNavBar'
 }
 </script>
