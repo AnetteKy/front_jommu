@@ -51,8 +51,8 @@
 
 
       <div>
-        <select v-on:change="clickSelectedRoleEvent" v-model="selectedRoleIdFromDropdown" class="form-select mb-3" aria-label="Default select example">
-          <option selected disabled>{{this.selectedRole}}</option>
+        <select v-model="userRequest.roleId" class="form-select mb-3" aria-label="Default select example">
+          <option selected disabled>vali roll</option>
           <option v-for="role in roles" :key="role.roleId" :value="role.roleId">{{ role.roleType }}</option>
 
         </select>
@@ -100,8 +100,6 @@ export default {
   data: function () {
     return {
 
-      selectedRole: sessionStorage.getItem('roletype'),
-
       // roleTypes: [
       //   {
       //     roleId: 0,
@@ -124,18 +122,17 @@ export default {
         lastName: '',
         dateOfBirth: '',
         gender: 'F',
+        roleId: Number(sessionStorage.getItem('roleId')),
         email: '',
-        termsAccept: '',
+        termsAccept: false,
         username: '',
         password: '',
       },
       registerResponse: {
         userId: 0,
-        roleId: 0,
-        roleType: ''
       },
 
-      selectedRoleIdFromDropdown: 0,
+      // selectedRoleIdFromDropdown: 0,
 
       roles: [
         {
@@ -148,23 +145,27 @@ export default {
   methods: {
 
     registerUser: function () {
-      if (this.selectedRole === 'Treener') {
-        sessionStorage.setItem('username', this.userRequest.username)
-        this.$router.push({name: 'trainerHomeRoute'});
-      } else {
-        sessionStorage.setItem('username', this.userRequest.username)
-        this.$router.push({name: 'athleteHomeRoute'})
-      }
-
 
       this.$http.post("/register", this.userRequest
       ).then(response => {
-
+        this.navigateToNextPage()
         console.log(response.data)
       }).catch(error => {
         console.log(error)
       });
     },
+
+    navigateToNextPage: function () {
+      sessionStorage.setItem('username', this.userRequest.username)
+      sessionStorage.setItem('userId', this.registerResponse.userId)
+      if (this.userRequest.roleId === 1) {
+        this.$router.push({name: 'trainerHomeRoute'});
+      } else {
+        this.$router.push({name: 'athleteHomeRoute'})
+      }
+
+    },
+
 
     getRolesDropdownInfo: function () {
       this.$http.get("/role")
@@ -178,8 +179,8 @@ export default {
     },
 
     clickSelectedRoleEvent: function () {
-      if (this.selectedRoleIdFromDropdown === 1) {
-        sessionStorage.setItem('roleType', this.roleTypes.roleType)
+      if (this.userRequest.role === 'Treener') {
+        sessionStorage.setItem('roleType', this.userRequest.role)
       } else {
         sessionStorage.setItem('roleType', 'Treenija')
       }

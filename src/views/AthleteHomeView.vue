@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import AthleteHomeViewNavBar from "@/components/navbar/AthleteHomeViewNavBar";
+import AthleteHomeViewNavBar from "@/components/navbar/AthleteNavBar";
 
 export default {
   name: "AthleteHomeView",
