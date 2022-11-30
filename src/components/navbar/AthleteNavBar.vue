@@ -7,7 +7,7 @@
       |
       <router-link to="/">Ajalugu</router-link>
       |
-      <router-link to="/">Harjutused</router-link>
+      <router-link to="/athlete/exercise">Harjutused</router-link>
     </nav>
     <router-view/>
   </div>

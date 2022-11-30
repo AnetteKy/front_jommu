@@ -51,9 +51,9 @@
 
 
       <div>
-        <select v-on:change="clickSelectedRoleEvent" v-model="selectedRoleIdFromDropdown" class="form-select mb-3" aria-label="Default select example">
-          <option selected disabled>{{this.selectedRole}}</option>
-          <option v-for="role in roles" :key="role.roleId" :value="role.roleId">{{ role.roleType }}</option>
+        <select class="form-select mb-3" aria-label="Default select example">
+          <option v-model:selected="selectedRoleType"></option>
+          <option v-for="role in roleTypes" :key="role.roleId" :value="role.roleId">{{ role.roleType }}</option>
 
         </select>
       </div>
@@ -100,14 +100,9 @@ export default {
   data: function () {
     return {
 
-      selectedRole: sessionStorage.getItem('roletype'),
+      // athlete: sessionStorage.getItem('athlete'),
+      // trainer: sessionStorage.getItem('trainer'),
 
-      // roleTypes: [
-      //   {
-      //     roleId: 0,
-      //     roleType: ''
-      //   }
-      // ],
 
       genders: [
         {
@@ -119,6 +114,7 @@ export default {
           description: 'Mees'
         }
       ],
+
       userRequest: {
         firstName: '',
         lastName: '',
@@ -147,47 +143,31 @@ export default {
   },
   methods: {
 
-    registerUser: function () {
-      if (this.selectedRole === 'Treener') {
-        sessionStorage.setItem('username', this.userRequest.username)
-        this.$router.push({name: 'trainerHomeRoute'});
+    selectedRoleType: function () {
+      if (sessionStorage.getItem('athlete')) {
+        return this.athlete;
       } else {
-        sessionStorage.setItem('username', this.userRequest.username)
-        this.$router.push({name: 'athleteHomeRoute'})
+        return this.trainer
       }
 
+    },
+
+    registerUser: function () {
+
+      if (this.registerResponse.roleType === 'Treener') {
+        this.$router.push({name: 'trainerHomeRoute'});
+      } else {
+        this.$router.push({name: 'athleteHomeRoute'})
+
+      }
 
       this.$http.post("/register", this.userRequest
       ).then(response => {
-
         console.log(response.data)
       }).catch(error => {
         console.log(error)
-      });
+      })
     },
-
-    getRolesDropdownInfo: function () {
-      this.$http.get("/role")
-          .then(response => {
-            this.roles = response.data
-            console.log(response.data)
-          })
-          .catch(error => {
-            console.log(error)
-          })
-    },
-
-    clickSelectedRoleEvent: function () {
-      if (this.selectedRoleIdFromDropdown === 1) {
-        sessionStorage.setItem('roleType', this.roleTypes.roleType)
-      } else {
-        sessionStorage.setItem('roleType', 'Treenija')
-      }
-    }
-  },
-
-  beforeMount() {
-    this.getRolesDropdownInfo()
   }
 }
 </script>
