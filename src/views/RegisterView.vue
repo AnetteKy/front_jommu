@@ -174,6 +174,14 @@ export default {
       }
 
     },
+    // someMethodName: function () {
+    //   this.$http.patch("/some/path", this.somePayloadDtoObject
+    //   ).then(response => {
+    //     console.log(response.data)
+    //   }).catch(error => {
+    //     console.log(error)
+    //   })
+    // }, SEE LÄHEB ADMIN VIEW TEENUSEKS!!!!!!!
 
 
     getRolesDropdownInfo: function () {
