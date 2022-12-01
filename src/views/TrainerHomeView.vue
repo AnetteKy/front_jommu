@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import TrainerHomeViewNavBar from "@/components/navbar/TrainerHomeViewNavBar";
+import TrainerHomeViewNavBar from "@/components/navbar/TrainerNavBar";
 
 export default {
   name: "TrainerHomeView",

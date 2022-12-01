@@ -4,6 +4,8 @@ import RoleView from "@/views/RoleView";
 import AthleteHomeView from "@/views/AthleteHomeView";
 import TrainerHomeView from "@/views/TrainerHomeView";
 import RegisterView from "@/views/RegisterView";
+import AthleteExerciseView from "@/views/AthleteExerciseView";
+import AthleteWorkoutPlanView from "@/views/AthleteWorkoutPlanView";
 
 Vue.use(VueRouter)
 
@@ -17,6 +19,15 @@ const routes = [
     path: '/athlete/home',
     name: 'athleteHomeRoute',
     component: AthleteHomeView
+  },  {
+    path: '/athlete/exercise',
+    name: 'athleteExerciseRoute',
+    component: AthleteExerciseView
+  },
+  {
+    path: '/athlete/workoutplan',
+    name: 'athleteWorkoutPlanRoute',
+    component: AthleteWorkoutPlanView
   },
   {
     path: '/trainer/home',

@@ -6,6 +6,7 @@
                aria-describedby="inputGroup-sizing-default" v-model="username">
       </div>
     </div>
+
     <div class="row justify-content-center m-3">
       <div class="input-group w-50">
         <input placeholder="Parool" type="password" class="form-control" aria-label="Sizing example input"
@@ -35,7 +36,7 @@ export default {
 
       loginResponse: {
         userId: '',
-        roleID: 0,
+        roleId: 0,
         roleType: ''
       },
       errorResponse: {
@@ -48,14 +49,18 @@ export default {
   methods: {
 
     trainerRegister: function () {
+      sessionStorage.setItem('roleId', 1)
       this.$router.push({name: 'registerRoute'})
     },
 
     trainerLogin: function () {
+      sessionStorage.setItem('roleId', 1)
+
       this.errorResponse.message = ''
       if (this.username.length === 0 || this.password.length === 0) {
         this.errorResponse.message = 'Palun täida kõik väljad';
       } else {
+
         this.$http.get("/login", {
               params: {
                 username: this.username,
@@ -70,7 +75,7 @@ export default {
           console.log(response.data)
         }).catch(error => {
           this.errorResponse = error.response.data
-        });
+        })
       }
     },
   }

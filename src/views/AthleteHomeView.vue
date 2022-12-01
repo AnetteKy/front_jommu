@@ -1,6 +1,6 @@
 <template>
-<div class="d-flex flex-grow-1 flex-column">
-  <AthleteHomeViewNavBar/>
+<div class="motherFlex d-flex flex-grow-1 flex-column">
+  <AthleteNavBar/>
 
   <div>
     <h1>Tere tulemast, {{username}}</h1>
@@ -12,11 +12,12 @@
 </template>
 
 <script>
-import AthleteHomeViewNavBar from "@/components/navbar/AthleteHomeViewNavBar";
+
+import AthleteNavBar from "@/components/navbar/AthleteNavBar";
 
 export default {
   name: "AthleteHomeView",
-  components: {AthleteHomeViewNavBar},
+  components: {AthleteNavBar},
   data: function () {
     return {
       // loginInfo: this.$route.query.loginInfo
