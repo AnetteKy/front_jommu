@@ -8,6 +8,7 @@ import AthleteExerciseView from "@/views/AthleteExerciseView";
 import AthleteWorkoutPlanView from "@/views/AthleteWorkoutPlanView";
 import AthleteWorkoutHistoryView from "@/views/AthleteWorkoutHistoryView";
 import AdminView from "@/views/AdminView";
+import AthleteAddExerciseView from "@/views/AthleteAddExerciseView";
 
 Vue.use(VueRouter)
 
