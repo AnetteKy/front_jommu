@@ -76,6 +76,8 @@
                aria-describedby="inputGroup-sizing-default">
       </div>
 
+        <AlertError :error-response="errorResponse"/>
+
         <div class="input-group mb-3">
           <div class="form-check">
             <input v-model="registerRequest.termsAccept" class="form-check-input" type="checkbox" value=""
@@ -95,14 +97,15 @@
 </template>
 
 <script>
+import AlertError from "@/components/alert/AlertError";
+
 export default {
   name: "RegisterView",
+  components: {AlertError},
 
   data: function () {
     return {
-
       passwordAgain: '',
-
       genders: [
         {
           code: 'F',
@@ -133,20 +136,32 @@ export default {
           roleId: 0,
           roleType: ''
         }
-      ]
+      ],
+      errorResponse: {
+        message: '',
+        errorCode: 0
+      }
     }
   },
   methods: {
 
     registerUser: function () {
 
+      this.errorResponse.message = ''
+      if (this.passwordAgain !== this.registerRequest.password) {
+        this.errorResponse.message = 'Paroolid ei ühti!';
+      } else {
+
+
+
       this.$http.post("/register", this.registerRequest
       ).then(response => {
-        this.navigateToNextPage()
-        console.log(response.data)
+          this.navigateToNextPage();
+          console.log(response.data);
       }).catch(error => {
         console.log(error)
       });
+      }
     },
 
     navigateToNextPage: function () {
@@ -168,9 +183,17 @@ export default {
             console.log(response.data)
           })
           .catch(error => {
+            this.errorResponse = error.response.data
             console.log(error)
           })
     },
+
+    // isPasswordAgainSame: function () {
+    //   if (this.passwordAgain === this.registerRequest.password) {
+    //
+    //   }
+    // }
+
   },
 
   beforeMount() {
