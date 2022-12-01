@@ -25,15 +25,21 @@
       <div class="row offset-md-1">
         <div class="col-9">
           <h4>Hetkel koostamisel</h4>
-          <input class="form-control form-control-lg" type="text"
-                 placeholder="Uue treeningkava nimi (lisatakse nupule vajutamisega)"
-                 aria-label=".form-control-lg example">
-          <AthleteWorkoutPlanTable/>
+          <div class="row offseyt-md-1">
+            <div class="col-sm-7">
+              <input class="form-control form-control-md col-md" type="text"
+                     placeholder="Uue treeningkava nimi (lisatakse nupule vajutamisega)"
+                     aria-label=".form-control-lg example">
+            </div>
+            <div class="col-lg-5">
+              <button type="button" class="btn btn-success ">LISA</button>
+            </div>
+          </div>
 
+
+          <AthleteWorkoutPlanTable/>
         </div>
-        <div class="col-3 offset-md-9">
-          <button type="button" class="btn btn-success">LISA</button>
-        </div>
+
       </div>
     </div>
     <div class="container">
