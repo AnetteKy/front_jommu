@@ -5,12 +5,18 @@
       <th scope="col">Kordus</th>
       <th scope="col">Seeria</th>
       <th scope="col">Raskus</th>
-      <th scope="col">*****</th>
+      <th v-if="displayDeleteButton" scope="col">****</th>
     </tr>
     </thead>
 </template>
 <script>
 export default {
-  name: 'AthleteTrainingProgramTableHead'
+  name: 'AthleteTrainingProgramTableHead',
+
+  data: function () {
+    return{
+      displayDeleteButton: false
+    }
+  }
 }
 </script>
