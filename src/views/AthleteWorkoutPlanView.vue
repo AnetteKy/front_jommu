@@ -3,7 +3,7 @@
 
     <AthleteNavBar/>
 
-    <Logout :logout="logout"/>
+
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
       <button type="button" class="btn btn-success btn-lg m-5">+ Lisa treeningkava</button>

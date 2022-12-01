@@ -5,7 +5,7 @@
       |
       <router-link to="/athlete/workoutplan">Treeningkava</router-link>
       |
-      <router-link to="/">Ajalugu</router-link>
+      <router-link to="/athlete/history">Ajalugu</router-link>
       |
       <router-link to="/athlete/exercise">Harjutused</router-link>
     </nav>
