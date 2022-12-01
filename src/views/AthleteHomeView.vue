@@ -1,5 +1,5 @@
 <template>
-<div class="d-flex flex-grow-1 flex-column">
+<div class="motherFlex d-flex flex-grow-1 flex-column">
   <AthleteNavBar/>
 
   <div>

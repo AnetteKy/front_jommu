@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-grow-1 flex-column">
+  <div class="motherFlex d-flex flex-grow-1 flex-column">
 
     <AthleteNavBar/>
 
@@ -27,7 +27,7 @@
 
 import AthleteNavBar from "@/components/navbar/AthleteNavBar";
 import Logout from "@/views/Logout";
-import AthleteWorkoutPlanTable from "@/components/AthleteWorkoutPlanTable/AthleteWorkoutPlanTable";
+import AthleteWorkoutPlanTable from "@/components/workoutplan_table/AthleteWorkoutPlanTable";
 
 export default {
   name: "AthleteWorkoutPlanView",

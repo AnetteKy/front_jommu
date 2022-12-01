@@ -8,8 +8,8 @@
 </template>
 <script>
 
-import AthleteWorkoutPlanTableHead from "@/components/AthleteWorkoutPlanTable/AthleteWorkoutPlanTableHead";
-import AthleteWorkoutPlanTableBody from "@/components/AthleteWorkoutPlanTable/AthleteWorkoutPlanTableBody";
+import AthleteWorkoutPlanTableHead from "@/components/workoutplan_table/AthleteWorkoutPlanTableHead";
+import AthleteWorkoutPlanTableBody from "@/components/workoutplan_table/AthleteWorkoutPlanTableBody";
 
 export default {
   name: 'AthleteWorkoutPlanTable',
