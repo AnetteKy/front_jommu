@@ -64,11 +64,11 @@
 
 <script>
 import AthleteNavBar from "@/components/navbar/AthleteNavBar";
-import ExercisesTabe from "@/components/exercise_table/ExerciseTable";
-import AthleteWorkoutPlanTable from "@/components/AthleteWorkoutPlanTable/AthleteWorkoutPlanTable";
+import ExerciseTable from "@/components/exercise_table/ExerciseTable";
+import AthleteWorkoutPlanTable from "@/components/workoutplan_table/AthleteWorkoutPlanTable";
 
 export default {
   name: "AthleteExerciseView",
-  components: {AthleteWorkoutPlanTable, ExercisesTabe, AthleteNavBar}
+  components: {AthleteWorkoutPlanTable, ExerciseTable, AthleteNavBar}
 }
 </script>
