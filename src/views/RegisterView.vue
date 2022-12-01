@@ -74,7 +74,7 @@
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">Parool uuesti</span>
-        <input v-model="registerRequest.password" type="password" class="form-control" aria-label="Sizing example input"
+        <input v-model="passwordAgain" type="password" class="form-control" aria-label="Sizing example input"
                aria-describedby="inputGroup-sizing-default">
       </div>
 
@@ -99,6 +99,8 @@ export default {
 
   data: function () {
     return {
+
+      passwordAgain: '',
 
       genders: [
         {
