@@ -54,7 +54,7 @@
         <div class="col-md-3">
           <h4>Harjutused</h4>
           <div class="row-cols-md-3">
-            <ExercisesTabe/>
+            <ExerciseTable/>
           </div>
         </div>
       </div>
