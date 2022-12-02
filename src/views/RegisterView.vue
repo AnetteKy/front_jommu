@@ -1,27 +1,27 @@
 <template>
   <div class="motherFlex registerView">
-    <div class="borrrder container col-lg-4 d-flex align-items-center">
+    <div class="borrrder container col-lg-4 d-flex align-items-center ">
       <div class="row d-flex flex-grow-1">
 
         <h3 class="text-white mb-4"><em>Registreeri juba täna!</em></h3>
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default">Eesnimi</span>
-          <input v-model="registerRequest.firstName" type="text" class="shadow-lg bg-transparent form-control"
+          <input v-model="registerRequest.firstName" type="text" class="shadow-lg form-control inpubox-style"
                  aria-label="Sizing example input"
                  aria-describedby="inputGroup-sizing-default">
         </div>
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default">Perekonnanimi</span>
-          <input v-model="registerRequest.lastName" type="text" class="shadow-lg bg-transparent form-control"
+          <input v-model="registerRequest.lastName" type="text" class="shadow-lg form-control inpubox-style"
                  aria-label="Sizing example input"
                  aria-describedby="inputGroup-sizing-default">
         </div>
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default">Sünniaeg</span>
-          <input v-model="registerRequest.dateOfBirth" type="date" class="shadow-lg bg-transparent form-control"
+          <input v-model="registerRequest.dateOfBirth" type="date" class="shadow-lg form-control inpubox-style"
                  aria-label="Sizing example input"
                  aria-describedby="inputGroup-sizing-default">
         </div>
@@ -29,7 +29,7 @@
         <div class="input-group mb-3">
           <div class="text form-check m-2" v-for="singleGender in genders">
             <input v-model="registerRequest.gender" v-bind:value="singleGender.code"
-                   class="shadow-lg bg-transparent form-check-input" type="radio"
+                   class="shadow-lg form-check-input" type="radio"
                    name="flexRadioDefault" id="flexRadioDefault1">
             <label class="form-check-label" for="flexRadioDefault1">
               {{ singleGender.description }}
@@ -40,14 +40,14 @@
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default">E-mail</span>
-          <input v-model="registerRequest.email" type="text" class="shadow-lg bg-transparent form-control"
+          <input v-model="registerRequest.email" type="text" class="shadow-lg form-control inpubox-style"
                  aria-label="Sizing example input"
                  aria-describedby="inputGroup-sizing-default">
         </div>
 
 
         <div>
-          <select v-model="registerRequest.roleId" class="shadow-lg bg-transparent form-select mb-3"
+          <select v-model="registerRequest.roleId" class="shadow-lg form-select mb-3 inpubox-style"
                   aria-label="Default select example">
             <option selected disabled>Vali roll</option>
             <option v-for="role in roles" :key="role.roleId" :value="role.roleId">{{ role.roleType }}</option>
@@ -58,21 +58,21 @@
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default">Kasutajanimi</span>
-          <input v-model="registerRequest.username" type="text" class="shadow-lg bg-transparent form-control"
+          <input v-model="registerRequest.username" type="text" class="shadow-lg form-control inpubox-style"
                  aria-label="Sizing example input"
                  aria-describedby="inputGroup-sizing-default">
         </div>
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default">Parool</span>
-          <input v-model="registerRequest.password" type="password" class="shadow-lg bg-transparent form-control"
+          <input v-model="registerRequest.password" type="password" class="shadow-lg form-control inpubox-style"
                  aria-label="Sizing example input"
                  aria-describedby="inputGroup-sizing-default">
         </div>
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">Parool uuesti</span>
-        <input v-model="passwordAgain" type="password" class="shadow-lg bg-transparent form-control" aria-label="Sizing example input"
+        <input v-model="passwordAgain" type="password" class="shadow-lg form-control inpubox-style" aria-label="Sizing example input"
                aria-describedby="inputGroup-sizing-default">
       </div>
 
@@ -89,7 +89,7 @@
         </div>
 
         <div>
-          <button v-on:click="registerUser" class="btn col-lg-5 btn-secondary m-3" type="submit">Registreeri</button>
+          <button v-on:click="registerUser" class="btn col-lg-5 btn-danger m-3" type="submit">Registreeri</button>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="transparentbg">
     <div class="row justify-content-center m-3">
       <div class="input-group w-50">
         <input placeholder="Kasutajanimi" type="text" class="form-control" aria-label="Sizing example input"
@@ -17,7 +17,7 @@
 
     <button v-on:click="athleteLogin" class="btn btn-success" type="submit">Logi sisse</button>
     <div class="row justify-content-center">
-      <label class="mt-5">Ei oma veel kontot?</label>
+      <label class="mt-5 font-color">Ei oma veel kontot?</label>
       <button v-on:click="athleteRegister" type="button" class="btn btn-secondary btn-sm w-25">Registreeri</button>
     </div>
   </div>

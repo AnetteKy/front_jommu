@@ -6,6 +6,7 @@
 }
 .borrrder {
     border: dimgray ridge 3px;
+    border-radius: 1em;
     margin: 1em;
 }
 
@@ -29,6 +30,23 @@
     color: #2c3e50;
     min-height: 100vh;
     display: flex;
+}
+
+.transparentbg {
+    background-color: #061f24;
+    opacity: 90%;
+    padding: 20px;
+    border: 1px #061f24 solid;
+    border-radius: 1.5em;
+}
+
+.inpubox-style {
+    background-color: white;
+    opacity: 75%;
+}
+
+.font-color {
+    color: white;
 }
 
 
