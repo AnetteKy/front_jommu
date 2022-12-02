@@ -3,8 +3,8 @@
   <tr>
     <th scope="col">Harjutus</th>
     <th scope="col">Lihasgrupp</th>
-    <th scope="col">Lisa</th>
-    <th scope="col">Vaata</th>
+    <th scope="col">****</th>
+    <th scope="col">****</th>
   </tr>
   </thead>
 </template>
