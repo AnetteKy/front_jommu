@@ -1,10 +1,14 @@
 <template>
   <tbody>
-  <tr v-for="extemplmuscleinfo in exTempMuscleGroupInfos">
-    <th scope="row">{{extemplmuscleinfo.exerciseTemplateName}}</th>
-    <td>{{extemplmuscleinfo.muscleGroupName}}</td>
-    <td>Button LISA</td>
-    <td>Button VAATA</td>
+  <tr v-for="exTemplMuscleInfo in exTempMuscleGroupInfos">
+    <th scope="row">{{ exTemplMuscleInfo.exerciseTemplateName }}</th>
+    <td>{{ exTemplMuscleInfo.muscleGroupName }}</td>
+    <td>
+      <button v-on:click="clickNavigateToAddExerciseEvent(exTemplMuscleInfo)" type="button" class="btn btn-success btn-sm">+Lisa</button>
+    </td>
+    <td>
+      <button type="button" class="btn btn-secondary btn-sm">Vaata</button>
+    </td>
   </tr>
   </tbody>
 </template>
@@ -38,6 +42,10 @@ export default {
             console.log(error)
           })
     },
+
+    clickNavigateToAddExerciseEvent: function (exTemplMuscleInfo) {
+      this.$emit('clickNavigateToAddExerciseEvent', exTemplMuscleInfo)
+    }
 
   },
   beforeMount() {

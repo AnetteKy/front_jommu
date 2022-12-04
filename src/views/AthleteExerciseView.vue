@@ -1,64 +1,59 @@
 <template>
-  <div class="d-flex flex-grow-1 flex-column">
+  <div class="motherFlex d-flex flex-column exerciseView">
     <AthleteNavBar/>
-    <div class="row">
-      <div class="col-md-2 offset-md-3">
+    <div class="row justify-content-around">
+      <div class="col-md-2">
         <h6>Vali treeningkava</h6>
         <select class="form-select " aria-label="Default select example">
           <option selected>Treeningkava</option>
           <option value="1">One</option>
         </select>
       </div>
-      <div class="col-md-4 offset-md-2">
-        <h6>Soovid koostada uut treeningkava?</h6>
-        <div class="input-group mb-2">
-          <span class="input-group-text" id="inputGroup-sizing-default">Treeningkava nimi</span>
-          <input type="text" class="form-control" aria-label="Sizing example input"
-                 aria-describedby="inputGroup-sizing-default">
+      <div class="col-md-3 offset-md-2">
+        <div class="row">
+          <h6>Soovid koostada uut treeningkava?</h6>
         </div>
-        <button type="button" class="btn btn-outline-success btn-lg">
-          LISA
+        <div class="row input-group mb-2">
+          <input type="text" class="form-control" id="autoSizingInput" placeholder="Sisesta treeningkava nimi">
+        </div>
+        <div class="row col-lg-6">
+        <button type="button" class="btn btn-success">
+          +LISA treeningkava
         </button>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row offset-md-1">
-        <div class="col-9">
-          <h4>Hetkel koostamisel</h4>
-          <div class="row offseyt-md-1">
-            <div class="col-sm-7">
-              <input class="form-control form-control-md col-md" type="text"
-                     placeholder="Uue treeningkava nimi (lisatakse nupule vajutamisega)"
-                     aria-label=".form-control-lg example">
-            </div>
-            <div class="col-lg-5">
-              <button type="button" class="btn btn-success ">LISA</button>
-            </div>
-          </div>
-
-
-          <AthleteWorkoutPlanTable/>
-        </div>
-
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-3">
-          FILTREERI HARJUTUSI
-          <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">KÕIK</button>
-          <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Kõht</button>
-          <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Jalg</button>
-          <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Käsi</button>
-        </div>
-        <div class="col-md-3">
-          <h4>Harjutused</h4>
-          <div class="row-cols-md-3">
-            <ExerciseTable/>
-          </div>
         </div>
       </div>
     </div>
+
+    <div class="row offset-2">
+      <div class="col-6">
+        <h4>Hetkel koostamisel:</h4>
+
+
+
+        <AthleteWorkoutPlanTable/>
+        <div class="row col-2 offset-10">
+          <button type="button" class="btn btn-success ">VALMIS</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row m-4">
+      <div class="col-3">
+        FILTREERI HARJUTUSI
+        <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">KÕIK</button>
+        <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Kõht</button>
+        <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Jalg</button>
+        <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Käsi</button>
+      </div>
+      <div class="col-md-5">
+        <h4>Harjutused</h4>
+
+        <ExerciseTable @clickNavigateToAddExerciseEvent="navigateToAddExView"/>
+
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -69,6 +64,18 @@ import AthleteWorkoutPlanTable from "@/components/workoutplan_table/AthleteWorko
 
 export default {
   name: "AthleteExerciseView",
-  components: {AthleteWorkoutPlanTable, ExerciseTable, AthleteNavBar}
+  components: {AthleteWorkoutPlanTable, ExerciseTable, AthleteNavBar},
+  methods: {
+
+    navigateToAddExView: function (exTemplMuscleInfo) {
+      this.$router.push({
+        name: 'athleteAddExerciseRoute', query: {
+          exerciseTemplateId: exTemplMuscleInfo.exerciseTemplateId,
+          exerciseTemplateName: exTemplMuscleInfo.exerciseTemplateName
+        }
+      })
+    }
+
+  }
 }
 </script>

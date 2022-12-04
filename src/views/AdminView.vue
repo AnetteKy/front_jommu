@@ -24,7 +24,7 @@
     <button v-on:click="addPicture" type="button" class="btn btn-primary">Salvesta pilt</button>
 
 
-      <!--  todo: Kui  pictureData == null   -->
+      <!--  todo: Kui  imgData == null   -->
       <div v-if="pictureInfo.imgData === null">
         <img src="../images/default.jpg" class="myPicSize">
       </div>
