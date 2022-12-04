@@ -1,7 +1,7 @@
 <template>
-  <div class="motherFlex d-flex flex-column exerciseView">
+  <div class="motherFlex flex-column exerciseView">
     <AthleteNavBar/>
-    <div class="row justify-content-around">
+    <div class="row justify-content-around m-1">
       <div class="col-md-2">
         <h6>Vali treeningkava</h6>
         <select class="form-select " aria-label="Default select example">
@@ -9,7 +9,7 @@
           <option value="1">One</option>
         </select>
       </div>
-      <div class="col-md-3 offset-md-2">
+      <div class="col-md-3">
         <div class="row">
           <h6>Soovid koostada uut treeningkava?</h6>
         </div>
@@ -24,11 +24,9 @@
       </div>
     </div>
 
-    <div class="row offset-2">
-      <div class="col-6">
+    <div class="row justify-content-center m-3">
+      <div class="col-6 justify-content-center">
         <h4>Hetkel koostamisel:</h4>
-
-
 
         <AthleteWorkoutPlanTable/>
         <div class="row col-2 offset-10">
