@@ -71,6 +71,7 @@ export default {
         ).then(response => {
           this.loginResponse = response.data
           sessionStorage.setItem('username', this.username)
+          sessionStorage.setItem('userId', this.loginResponse.userId)
           this.$router.push({name: 'trainerHomeRoute'})
           console.log(response.data)
         }).catch(error => {

@@ -39,6 +39,7 @@ export default {
 
   data: function () {
     return {
+      // userId: 0,
       displayTrainerLogin: false,
       displayAthleteLogin: false,
     }
@@ -51,6 +52,7 @@ export default {
 
     },
     displayAthleteLoginOnClick: function () {
+      // sessionStorage.setItem('userId', this.userId)
       this.displayAthleteLogin = true
 
     }

@@ -12,6 +12,9 @@
       <div class="d-grid gap-2 d-md-flex justify-content-md-center">
         <button v-on:click="navigateToWorkoutPlanView" type="button" class="btn btn-outline-secondary btn-lg m-5">Vaata oma treeningkavasid</button>
       </div>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-center col-lg-2 offset-5">
+        <input type="text" class="form-control" id="autoSizingInput" placeholder="Sisesta treeningkava nimi">
+      </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-center">
         <button v-on:click="navigateToExerciseView" type="button" class="btn btn-outline-secondary btn-lg m-5">Koosta treeningkava</button>
       </div>
@@ -29,14 +32,14 @@ export default {
   components: {AthleteNavBar},
   data: function () {
     return {
-      // loginInfo: this.$route.query.loginInfo
-      // username: this.$route.query.username
+      userId: sessionStorage.getItem('userId'),
       username: sessionStorage.getItem('username')
     }
   },
 
   methods: {
     navigateToExerciseView: function () {
+      sessionStorage.getItem('userId')
       this.$router.push({name: 'athleteExerciseRoute'})
     },
     navigateToWorkoutPlanView: function () {
