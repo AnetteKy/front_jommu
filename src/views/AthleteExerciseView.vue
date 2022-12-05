@@ -4,9 +4,11 @@
     <div class="row justify-content-around m-1">
       <div class="col-md-2">
         <h6>Vali treeningkava</h6>
-        <select class="form-select " aria-label="Default select example">
-          <option selected>Treeningkava</option>
-          <option value="1">One</option>
+        <select v-model="workoutPlanResponse.workoutPlanId" class="form-select " aria-label="Default select example">
+          <option selected disabled>Treeningkava</option>
+          <option v-for="workoutPlan in workoutPlans" :key="workoutPlan.workoutPlanId" :value="workoutPlan.workoutPlanId">
+            {{workoutPlan.workoutPlanName}}
+          </option>
         </select>
       </div>
       <div class="col-md-3">
@@ -14,10 +16,10 @@
           <h6>Soovid koostada uut treeningkava?</h6>
         </div>
         <div class="row input-group mb-2">
-          <input type="text" class="form-control" id="autoSizingInput" placeholder="Sisesta treeningkava nimi">
+          <input v-model="workoutPlanRequest.workoutPlanName" type="text" class="form-control" id="autoSizingInput" placeholder="Sisesta treeningkava nimi">
         </div>
         <div class="row col-lg-6">
-        <button v-on:click="" type="button" class="btn btn-success">
+        <button v-on:click="addWorkoutPlanInfo" type="button" class="btn btn-success">
           +LISA treeningkava
         </button>
         </div>
@@ -65,14 +67,20 @@ export default {
   components: {AthleteWorkoutPlanTable, ExerciseTable, AthleteNavBar},
   data: function () {
     return {
+
       workoutPlanRequest: {
         userId: sessionStorage.getItem('userId'),
         workoutPlanName: ''
       },
 
       workoutPlanResponse: {
-        workoutPlanId: 0,
+        workoutPlanId: sessionStorage.getItem('workoutPlanId'),
         userId: 0,
+      },
+
+      workoutPlans: {
+        workoutPlanId: 0,
+        workoutPlanName: ''
       }
     }
   },
@@ -82,11 +90,23 @@ export default {
     addWorkoutPlanInfo: function () {
       this.$http.post("/workoutplan/info", this.workoutPlanRequest
       ).then(response => {
-        //this.getallworkoutplans
+//siia tuleb responsebody ja küsin siit välja!!
+        this.getAllWorkoutPlanInfo()
         console.log(response.data)
       }).catch(error => {
         console.log(error)
       })
+    },
+
+    getAllWorkoutPlanInfo: function () {
+      this.$http.get("/allworkoutplan/info")
+          .then(response => {
+            this.workoutPlans = response.data
+            sessionStorage.setItem('workoutPlanId', this.workoutPlans.workoutPlanId)
+          })
+          .catch(error => {
+            console.log(error)
+          })
     },
 
     navigateToAddExView: function (exTemplMuscleInfo) {
@@ -98,6 +118,9 @@ export default {
       })
     }
 
+  },
+  mounted() {
+    this.getAllWorkoutPlanInfo()
   }
 }
 </script>
