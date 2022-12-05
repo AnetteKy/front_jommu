@@ -2,7 +2,7 @@
   <div class="motherFlex d-flex flex-column addExerciseView">
 
     <div class="m-5">
-      <h1><em>Kõik Algab Sinust Endast!</em></h1>
+      <h1><em>Kõik algab sinust endast!</em></h1>
     </div>
 
     <div class="row-cols-md-3 col-6 d-flex m-4">
