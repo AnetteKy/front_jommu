@@ -5,8 +5,8 @@
     <td>20</td>
     <td>3</td>
     <td>40</td>
-    <td v-if="displayDeleteButton">
-      <button type="button" class="col-5 m-1 btn btn-success btn-sm">Eemalda</button>
+    <td>
+      <button type="button" class="col-6 m-1 btn btn-success btn-sm">Eemalda</button>
     </td>
   </tr>
   </tbody>
@@ -17,7 +17,6 @@ export default {
 
   data: function () {
     return{
-      displayDeleteButton: false
     }
   }
 }

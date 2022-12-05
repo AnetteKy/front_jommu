@@ -24,15 +24,16 @@
         <tr>
           <th scope="row">{{ exerciseTemplateName }}</th>
           <td>
-            <input v-model="exerciseInfo.reps" type="text" class="form-control text-sm-center" id="autoSizingInput"
+            <input v-model="exerciseRequest.reps" type="text" class="form-control text-sm-center" id="autoSizingInput"
                    placeholder="Sisesta korduste arv">
           </td>
           <td>
-            <input v-model="exerciseInfo.sets" type="text" class="form-control text-sm-center" id="autoSizingInput"
+            <input v-model="exerciseRequest.sets" type="text" class="form-control text-sm-center" id="autoSizingInput"
                    placeholder="Sisesta seeriate arv">
           </td>
           <td>
-            <input v-model="exerciseInfo.weight" value="0" type="text" class="form-control text-sm-center" id="autoSizingInput"
+            <input v-model="exerciseRequest.weight" value="0" type="text" class="form-control text-sm-center"
+                   id="autoSizingInput"
                    placeholder="Sisesta raskus, kg">
           </td>
         </tr>
@@ -42,7 +43,9 @@
     </div>
 
     <div class="row col-1 justify-content-center d-flex offset-6">
-      <button v-on:click="addExerciseAdditionalInfo(exerciseInfo.exerciseId)" type="button" class="btn btn-success">Valmis</button>
+      <button v-on:click="addExerciseAdditionalInfo" type="button" class="btn btn-success">
+        Valmis
+      </button>
     </div>
 
   </div>
@@ -55,24 +58,24 @@ export default {
     return {
       exerciseTemplateName: this.$route.query.exerciseTemplateName,
 
-      exerciseInfo: {
-        exerciseId: 0,
+      exerciseRequest: {
         exerciseTemplateId: this.$route.query.exerciseTemplateId,
-     //   workoutPlanId: ,
+        workoutPlanId: this.$route.query.workoutPlanId,
         reps: null,
         sets: null,
         weight: null,
-        status: 'A',
-      }
+      },
+      exerciseResponse: {
+
+      },
     }
   },
   methods: {
 
-    addExerciseAdditionalInfo: function (exerciseId) {
-      this.$http.post("/exercise/additional/info", this.exerciseInfo
+    addExerciseAdditionalInfo: function () {
+      this.$http.post("/exercise/additional/info", this.exerciseRequest
       ).then(response => {
         this.navigateToExerciseView()
-        // siin sees pean kutsuma tegelikult get meetodi ka, kuhu panen parameetriks kaasa exercise id!!!!!!!
         console.log(response.data)
       }).catch(error => {
         console.log(error)
