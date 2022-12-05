@@ -17,7 +17,7 @@
           <input type="text" class="form-control" id="autoSizingInput" placeholder="Sisesta treeningkava nimi">
         </div>
         <div class="row col-lg-6">
-        <button type="button" class="btn btn-success">
+        <button v-on:click="" type="button" class="btn btn-success">
           +LISA treeningkava
         </button>
         </div>
@@ -63,7 +63,31 @@ import AthleteWorkoutPlanTable from "@/components/workoutplan_table/AthleteWorko
 export default {
   name: "AthleteExerciseView",
   components: {AthleteWorkoutPlanTable, ExerciseTable, AthleteNavBar},
+  data: function () {
+    return {
+      workoutPlanRequest: {
+        userId: sessionStorage.getItem('userId'),
+        workoutPlanName: ''
+      },
+
+      workoutPlanResponse: {
+        workoutPlanId: 0,
+        userId: 0,
+      }
+    }
+  },
+
   methods: {
+
+    addWorkoutPlanInfo: function () {
+      this.$http.post("/workoutplan/info", this.workoutPlanRequest
+      ).then(response => {
+        //this.getallworkoutplans
+        console.log(response.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    },
 
     navigateToAddExView: function (exTemplMuscleInfo) {
       this.$router.push({

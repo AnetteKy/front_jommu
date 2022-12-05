@@ -52,12 +52,11 @@
 <script>
 
 import AthleteNavBar from "@/components/navbar/AthleteNavBar";
-import Logout from "@/views/Logout";
 import AthleteWorkoutPlanTable from "@/components/workoutplan_table/AthleteWorkoutPlanTable";
 
 export default {
   name: "AthleteWorkoutPlanView",
-  components: {Logout, AthleteWorkoutPlanTable, AthleteNavBar},
+  components: {AthleteWorkoutPlanTable, AthleteNavBar},
 
   data: function () {
     return{
@@ -66,9 +65,6 @@ export default {
   },
 
   methods: {
-    logout: function () {
-      this.$router.push({name: 'roleRoute'})
-    },
     navigateToExerciseView: function () {
       this.$router.push({name: 'athleteExerciseRoute'}),
           this.displayDeleteButton = true

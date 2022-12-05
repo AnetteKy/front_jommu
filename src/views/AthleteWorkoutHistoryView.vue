@@ -3,24 +3,18 @@
 
     <AthleteNavBar/>
 
-    <Logout :logout="logout"/>
 
   </div>
 </template>
 
 <script>
-import Logout from "@/views/Logout";
+
 import AthleteNavBar from "@/components/navbar/AthleteNavBar";
 
 export default {
   name: "AthleteWorkoutPlanHistoryView",
-  components: {Logout, AthleteNavBar},
+  components: {AthleteNavBar},
 
-  methods: {
-    logout: function () {
-      this.$router.push({name: 'roleRoute'})
-    },
-  }
 }
 </script>
 
