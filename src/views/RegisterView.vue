@@ -165,7 +165,9 @@ export default {
 
       this.$http.post("/register", this.registerRequest
       ).then(response => {
+        this.registerResponse = response.data
           this.navigateToNextPage();
+        sessionStorage.setItem('userId', this.registerResponse.userId)
           console.log(response.data);
       }).catch(error => {
         console.log(error)
