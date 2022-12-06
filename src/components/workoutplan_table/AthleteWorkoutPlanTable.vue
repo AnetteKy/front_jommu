@@ -1,9 +1,9 @@
 <template>
 
-    <table class="table">
-      <AthleteWorkoutPlanTableHead/>
-      <AthleteWorkoutPlanTableBody/>
-    </table>
+  <table class="table">
+    <AthleteWorkoutPlanTableHead/>
+    <AthleteWorkoutPlanTableBody :exercise-table-infos="exerciseTableInfos" v-on="$listeners"/>
+  </table>
 
 </template>
 <script>
@@ -13,6 +13,9 @@ import AthleteWorkoutPlanTableBody from "@/components/workoutplan_table/AthleteW
 
 export default {
   name: 'AthleteWorkoutPlanTable',
-  components: {AthleteWorkoutPlanTableHead, AthleteWorkoutPlanTableBody}
+  components: {AthleteWorkoutPlanTableHead, AthleteWorkoutPlanTableBody},
+  props: {
+    exerciseTableInfos: {}
+  }
 }
 </script>

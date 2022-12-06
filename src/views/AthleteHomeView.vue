@@ -42,6 +42,7 @@ export default {
 
 
     navigateToExerciseView: function () {
+      sessionStorage.setItem('workoutPlanId', '0')
       this.$router.push({name: 'athleteExerciseRoute'})
     },
     navigateToWorkoutPlanView: function () {

@@ -1,10 +1,10 @@
 <template>
   <tbody>
-  <tr>
-    <th scope="row">blabla</th>
-    <td>20</td>
-    <td>3</td>
-    <td>40</td>
+  <tr v-for="exerciseTableInfo in exerciseTableInfos" >
+    <th scope="row">{{exerciseTableInfo.exerciseTemplateName}}</th>
+    <td>{{exerciseTableInfo.reps}}</td>
+    <td>{{exerciseTableInfo.sets}}</td>
+    <td>{{exerciseTableInfo.weight}}</td>
     <td>
       <button type="button" class="col-6 m-1 btn btn-success btn-sm">Eemalda</button>
     </td>
@@ -13,11 +13,12 @@
 </template>
 <script>
 export default {
-  name: 'AthleteTrainingProgramTableBody',
-
+  name: 'AthleteWorkoutPlanTableBody',
+  props: {
+    exerciseTableInfos: {}
+  },
   data: function () {
-    return{
-    }
+    return {}
   }
 }
 </script>

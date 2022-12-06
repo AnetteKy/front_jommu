@@ -4,8 +4,8 @@
     <div class="row justify-content-around m-1">
       <div class="col-md-2">
         <h6>Vali treeningkava</h6>
-        <select v-model="workoutPlanResponse.workoutPlanId" class="form-select " aria-label="Default select example">
-          <option selected disabled>Treeningkava nimi</option>
+        <select v-on:change="changeWorkoutPlan" v-model="selectedWorkoutPlanId" class="form-select " aria-label="Default select example">
+          <option selected disabled value="0">Treeningkava nimi</option>
           <option v-for="workoutPlan in workoutPlans" :key="workoutPlan.workoutPlanId"
                   :value="workoutPlan.workoutPlanId">
             {{ workoutPlan.workoutPlanName }}
@@ -28,11 +28,12 @@
       </div>
     </div>
 
-    <div class="row justify-content-center m-3">
+    <div v-if="selectedWorkoutPlanId !== '0'" class="row justify-content-center m-3">
       <div class="col-6 justify-content-center">
         <h4>Hetkel koostamisel:</h4>
 
-        <AthleteWorkoutPlanTable/>
+        <AthleteWorkoutPlanTable :exercise-table-infos="exerciseTableInfos"/>
+
         <div class="row col-2 offset-10">
           <button type="button" class="btn btn-success ">VALMIS</button>
         </div>
@@ -40,7 +41,7 @@
     </div>
 
 
-    <div class="row m-4">
+    <div v-if="selectedWorkoutPlanId !== '0'" class="row m-4">
       <div class="col-3">
         FILTREERI HARJUTUSI
         <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">KÕIK</button>
@@ -69,7 +70,7 @@ export default {
   components: {AthleteWorkoutPlanTable, ExerciseTable, AthleteNavBar},
   data: function () {
     return {
-
+      selectedWorkoutPlanId: sessionStorage.getItem('workoutPlanId'),
       workoutPlanRequest: {
         userId: sessionStorage.getItem('userId'),
         workoutPlanName: ''
@@ -83,6 +84,15 @@ export default {
       workoutPlans: {
         workoutPlanId: 0,
         workoutPlanName: ''
+      },
+
+      exerciseTableInfos: {
+        workoutPlanId: 0,
+        exerciseTemplateName: '',
+        reps: 0,
+        sets: 0,
+        weight: 0,
+        status: '',
       }
     }
   },
@@ -93,8 +103,10 @@ export default {
       this.$http.post("/workoutplan/info", this.workoutPlanRequest
       ).then(response => {
         this.workoutPlanResponse = response.data
-        sessionStorage.setItem('workoutPlanId', this.workoutPlanResponse.workoutPlanId)
+        this.selectedWorkoutPlanId = this.workoutPlanResponse.workoutPlanId
+        sessionStorage.setItem('workoutPlanId', this.selectedWorkoutPlanId)
         this.getAllWorkoutPlanInfo()
+        this.getAllExerciseTableInfo()
         console.log(response.data)
       }).catch(error => {
         console.log(error)
@@ -121,19 +133,30 @@ export default {
       })
     },
 
-    // getAllExerciseTableInfo: function () {
-    //   this.$http.get("/some/path")
-    //       .then(response => {
-    //         console.log(response.data)
-    //       })
-    //       .catch(error => {
-    //         console.log(error)
-    //       })
-    // },
+    getAllExerciseTableInfo: function () {
+      this.$http.get("/exercise/table/info", {
+            params: {
+              workoutPlanId: this.selectedWorkoutPlanId
+            }
+          }
+      ).then(response => {
+        this.exerciseTableInfos = response.data
+        console.log(response.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    },
 
+    changeWorkoutPlan: function () {
+      this.getAllExerciseTableInfo()
+    }
   },
-  mounted() {
-    this.getAllWorkoutPlanInfo()
+  beforeMount() {
+    if (this.selectedWorkoutPlanId !== '0') {
+      this.getAllExerciseTableInfo()
+    }
+
+    this.getAllWorkoutPlanInfo();
   }
 }
 </script>
