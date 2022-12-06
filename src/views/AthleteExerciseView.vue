@@ -6,8 +6,9 @@
         <h6>Vali treeningkava</h6>
         <select v-model="workoutPlanResponse.workoutPlanId" class="form-select " aria-label="Default select example">
           <option selected disabled>Treeningkava</option>
-          <option v-for="workoutPlan in workoutPlans" :key="workoutPlan.workoutPlanId" :value="workoutPlan.workoutPlanId">
-            {{workoutPlan.workoutPlanName}}
+          <option v-for="workoutPlan in workoutPlans" :key="workoutPlan.workoutPlanId"
+                  :value="workoutPlan.workoutPlanId">
+            {{ workoutPlan.workoutPlanName }}
           </option>
         </select>
       </div>
@@ -16,12 +17,13 @@
           <h6>Soovid koostada uut treeningkava?</h6>
         </div>
         <div class="row input-group mb-2">
-          <input v-model="workoutPlanRequest.workoutPlanName" type="text" class="form-control" id="autoSizingInput" placeholder="Sisesta treeningkava nimi">
+          <input v-model="workoutPlanRequest.workoutPlanName" type="text" class="form-control" id="autoSizingInput"
+                 placeholder="Sisesta treeningkava nimi">
         </div>
         <div class="row col-lg-6">
-        <button v-on:click="addWorkoutPlanInfo" type="button" class="btn btn-success">
-          +LISA treeningkava
-        </button>
+          <button v-on:click="addWorkoutPlanInfo" type="button" class="btn btn-success">
+            +LISA treeningkava
+          </button>
         </div>
       </div>
     </div>
@@ -41,7 +43,9 @@
     <div class="row m-4">
       <div class="col-3">
         <h5 class="mb-3">Filtreeri harjutusi</h5>
-        <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">KÕIK</button>
+        <button v-on:click="getAllExTempMuscleInfo" type="button"
+                class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">KÕIK
+        </button>
         <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Kõht</button>
         <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Jalg</button>
         <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Käsi</button>
@@ -50,7 +54,8 @@
 
       <div class="col-md-5">
         <h4 class="mb-3">Harjutused</h4>
-        <ExerciseTable @clickNavigateToAddExerciseEvent="navigateToAddExView"/>
+        <ExerciseTable :ex-temp-muscle-group-infos="exTempMuscleGroupInfos"
+                       @clickNavigateToAddExerciseEvent="navigateToAddExView"/>
 
       </div>
     </div>
@@ -82,7 +87,27 @@ export default {
       workoutPlans: {
         workoutPlanId: 0,
         workoutPlanName: ''
+      },
+
+      // muscleGroups: [
+      //   {
+      //     exTempName: '',
+      //     muscleGroupId: 0,
+      //     muscleGroupName: '',
+      //   }
+      // ]
+
+      exTempMuscleGroupInfos: {
+        exTempMuscleGroupId: 0,
+        exerciseTemplateId: 0,
+        exerciseTemplateName: '',
+        exerciseTemplateDescription: '',
+        exerciseTemplateImgData: '',
+        muscleGroupId: 0,
+        muscleGroupName: ''
       }
+
+
     }
   },
 
@@ -117,11 +142,36 @@ export default {
           exerciseTemplateName: exTemplMuscleInfo.exerciseTemplateName
         }
       })
-    }
+    },
+
+    // getAllMuscleGroupsById: function () {
+    //   this.$http.get("/all/musclegroups")
+    //       .then(response => {
+    //         this.workoutPlans = response.data
+    //         console.log(response.data)
+    //       })
+    //       .catch(error => {
+    //         console.log(error)
+    //       })
+    // },
+
+    getAllExTempMuscleInfo: function () {
+      this.$http.get("/extempmusclegroup")
+          .then(response => {
+            this.exTempMuscleGroupInfos = response.data
+            console.log(response.data)
+          })
+          .catch(error => {
+            console.log(error)
+          })
+    },
 
   },
-  mounted() {
+  beforeMount() {
     this.getAllWorkoutPlanInfo()
-  }
+    this.getAllExTempMuscleInfo()
+  },
+
+
 }
 </script>
