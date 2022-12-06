@@ -1,6 +1,6 @@
 <template>
   <div class="motherFlex registerView">
-    <div class="borrrder container col-lg-4 d-flex align-items-center ">
+    <div class="opacityregister container col-lg-4 d-flex align-items-center ">
       <div class="row d-flex flex-grow-1">
 
         <h3 class="text-white mb-4"><em>Registreeri juba täna!</em></h3>
@@ -25,6 +25,15 @@
                  aria-label="Sizing example input"
                  aria-describedby="inputGroup-sizing-default">
         </div>
+
+
+<!--        <div class="row-cols-2 mb-3">-->
+<!--          <input type="checkbox" class="btn-check" id="btn-check-1" checked autocomplete="off">-->
+<!--          <label class="btn btn-light" for="btn-check-1">Naine</label>-->
+<!--          <label class="btn btn-light" for="btn-check-2">Mees</label>-->
+<!--        </div>-->
+
+
 
         <div class="input-group mb-3">
           <div class="text form-check m-2" v-for="singleGender in genders">
@@ -89,7 +98,7 @@
         </div>
 
         <div>
-          <button v-on:click="registerUser" class="btn col-lg-5 btn-danger m-3" type="submit">Registreeri</button>
+          <button v-on:click="registerUser" class="btn col-lg-5 btn-outline-light m-3" type="submit">Registreeri</button>
         </div>
       </div>
     </div>

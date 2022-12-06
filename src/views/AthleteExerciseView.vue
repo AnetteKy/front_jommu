@@ -43,16 +43,19 @@
 
     <div v-if="selectedWorkoutPlanId !== '0'" class="row m-4">
       <div class="col-3">
-        FILTREERI HARJUTUSI
-        <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">KÕIK</button>
+        <h5 class="mb-3">Filtreeri harjutusi</h5>
+        <button v-on:click="getAllExTempMuscleInfo" type="button"
+                class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">KÕIK
+        </button>
         <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Kõht</button>
         <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Jalg</button>
         <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Käsi</button>
       </div>
       <div class="col-md-5">
-        <h4>Harjutused</h4>
+        <h4 class="mb-3">Harjutused</h4>
 
         <ExerciseTable @clickNavigateToExerciseDescriptionEvent="clickNavigateToExerciseDescriptionView"
+                       :ex-temp-muscle-group-infos="exTempMuscleGroupInfos"
                        @clickNavigateToAddExerciseEvent="navigateToAddExView"/>
 
       </div>
@@ -94,6 +97,17 @@ export default {
         sets: 0,
         weight: 0,
         status: '',
+      },
+
+
+      exTempMuscleGroupInfos: {
+        exTempMuscleGroupId: 0,
+        exerciseTemplateId: 0,
+        exerciseTemplateName: '',
+        exerciseTemplateDescription: '',
+        exerciseTemplateImgData: '',
+        muscleGroupId: 0,
+        muscleGroupName: ''
       }
     }
   },
@@ -159,7 +173,19 @@ clickNavigateToExerciseDescriptionView: function (exTemplMuscleInfo){
 
     changeWorkoutPlan: function () {
       this.getAllExerciseTableInfo()
-    }
+    },
+
+    getAllExTempMuscleInfo: function () {
+      this.$http.get("/extempmusclegroup")
+          .then(response => {
+            this.exTempMuscleGroupInfos = response.data
+            console.log(response.data)
+          })
+          .catch(error => {
+            console.log(error)
+          })
+    },
+
   },
   beforeMount() {
     if (this.selectedWorkoutPlanId !== '0') {
@@ -167,6 +193,7 @@ clickNavigateToExerciseDescriptionView: function (exTemplMuscleInfo){
     }
 
     this.getAllWorkoutPlanInfo();
+    this.getAllExTempMuscleInfo()
   }
 }
 </script>
