@@ -7,7 +7,7 @@
       <button v-on:click="clickNavigateToAddExerciseEvent(exTemplMuscleInfo)" type="button" class="btn btn-success btn-sm">+Lisa</button>
     </td>
     <td>
-      <button type="button" class="btn btn-secondary btn-sm">Vaata</button>
+      <button v-on:click="clickNavigateToExerciseDescriptionEvent(exTemplMuscleInfo)" type="button" class="btn btn-secondary btn-sm">Vaata</button>
     </td>
   </tr>
   </tbody>
@@ -45,8 +45,10 @@ export default {
 
     clickNavigateToAddExerciseEvent: function (exTemplMuscleInfo) {
       this.$emit('clickNavigateToAddExerciseEvent', exTemplMuscleInfo)
-    }
-
+    },
+    clickNavigateToExerciseDescriptionEvent:function (exTemplMuscleInfo) {
+      this.$emit('clickNavigateToExerciseDescriptionEvent',exTemplMuscleInfo)
+    },
   },
   beforeMount() {
     this.getAllExTempMuscleInfo()
