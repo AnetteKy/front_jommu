@@ -9,6 +9,7 @@ import AthleteWorkoutPlanView from "@/views/AthleteWorkoutPlanView";
 import AthleteWorkoutHistoryView from "@/views/AthleteWorkoutHistoryView";
 import AdminView from "@/views/AdminView";
 import AthleteAddExerciseView from "@/views/AthleteAddExerciseView";
+import ExerciseDescriptionView from "@/views/ExerciseDescriptionView";
 
 Vue.use(VueRouter)
 
@@ -56,7 +57,12 @@ const routes = [
     path: '/admin',
     name: 'adminRoute',
     component: AdminView
+  }, {
+    path: '/exercisedescription',
+    name: 'exerciseDescriptionRoute',
+    component: ExerciseDescriptionView
   },
+
 ]
 
 const router = new VueRouter({

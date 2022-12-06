@@ -52,7 +52,8 @@
       <div class="col-md-5">
         <h4>Harjutused</h4>
 
-        <ExerciseTable @clickNavigateToAddExerciseEvent="navigateToAddExView"/>
+        <ExerciseTable @clickNavigateToExerciseDescriptionEvent="clickNavigateToExerciseDescriptionView"
+                       @clickNavigateToAddExerciseEvent="navigateToAddExView"/>
 
       </div>
     </div>
@@ -98,6 +99,15 @@ export default {
   },
 
   methods: {
+clickNavigateToExerciseDescriptionView: function (exTemplMuscleInfo){
+  this.$router.push({
+    name:'exerciseDescriptionRoute',query:{
+      exerciseTemplateId: exTemplMuscleInfo.exerciseTemplateId,
+      exerciseTemplateName: exTemplMuscleInfo.exerciseTemplateName,
+      exerciseTemplateDescription: exTemplMuscleInfo.exerciseTemplateDescription
+    }
+  })
+},
 
     addWorkoutPlanInfo: function () {
       this.$http.post("/workoutplan/info", this.workoutPlanRequest
