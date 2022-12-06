@@ -123,6 +123,8 @@ clickNavigateToExerciseDescriptionView: function (exTemplMuscleInfo){
   })
 },
 
+
+
     addWorkoutPlanInfo: function () {
       this.$http.post("/workoutplan/info", this.workoutPlanRequest
       ).then(response => {
@@ -138,13 +140,16 @@ clickNavigateToExerciseDescriptionView: function (exTemplMuscleInfo){
     },
 
     getAllWorkoutPlanInfo: function () {
-      this.$http.get("/allworkoutplan/info")
-          .then(response => {
-            this.workoutPlans = response.data
-          })
-          .catch(error => {
-            console.log(error)
-          })
+      this.$http.get("/allworkoutplan/info", {
+            params: {
+              userId: sessionStorage.getItem('userId'),
+            }
+          }
+      ).then(response => {
+        this.workoutPlans = response.data
+      }).catch(error => {
+        console.log(error)
+      })
     },
 
     navigateToAddExView: function (exTemplMuscleInfo) {
