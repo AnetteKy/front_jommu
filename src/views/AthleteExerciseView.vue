@@ -40,15 +40,16 @@
 
     <div class="row m-4">
       <div class="col-3">
-        FILTREERI HARJUTUSI
+        <h5 class="mb-3">Filtreeri harjutusi</h5>
         <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">KÕIK</button>
         <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Kõht</button>
         <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Jalg</button>
         <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Käsi</button>
       </div>
-      <div class="col-md-5">
-        <h4>Harjutused</h4>
 
+
+      <div class="col-md-5">
+        <h4 class="mb-3">Harjutused</h4>
         <ExerciseTable @clickNavigateToAddExerciseEvent="navigateToAddExView"/>
 
       </div>

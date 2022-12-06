@@ -4,11 +4,12 @@
     display: flex;
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
-.borrrder {
-    border: dimgray ridge 3px;
-    border-radius: 1em;
-    margin: 1em;
-}
+
+/*.borrrder {*/
+/*    border: dimgray ridge 3px;*/
+/*    border-radius: 1em;*/
+/*    margin: 1em;*/
+/*}*/
 
 .roleView {
     background-image: url("../photo/registerbackground.png");
@@ -58,6 +59,18 @@
     border: 1px #061f24 solid;
     border-radius: 1.5em;
 }
+
+.opacityregister {
+    background-color: rgba(88,63,80,0.48);
+    opacity: 90%;
+    padding: 20px;
+    border: 2px rgba(71,58,67,0.96) solid;
+    border-radius: 1.5em;
+}
+
+/*.registerbutton {*/
+/*    background-color: ;*/
+/*}*/
 
 .inpubox-style {
     background-color: white;
