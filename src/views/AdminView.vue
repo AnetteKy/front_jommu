@@ -82,7 +82,6 @@ export default {
     },
 
     addPicture: function () {
-      // ???
       this.$http.patch("/photo", this.pictureInfo
       ).then(response => {
         console.log(response.data)

@@ -24,15 +24,15 @@
         <tr>
           <th scope="row">{{ exerciseTemplateName }}</th>
           <td>
-            <input v-model="exerciseRequest.reps" type="text" class="form-control text-sm-center" id="autoSizingInput"
+            <input v-model="exerciseRequest.reps" type="number" class="form-control text-sm-center" id="autoSizingInput"
                    placeholder="Sisesta korduste arv">
           </td>
           <td>
-            <input v-model="exerciseRequest.sets" type="text" class="form-control text-sm-center" id="autoSizingInput"
+            <input v-model="exerciseRequest.sets" type="number" class="form-control text-sm-center" id="autoSizingInput"
                    placeholder="Sisesta seeriate arv">
           </td>
           <td>
-            <input v-model="exerciseRequest.weight" value="0" type="text" class="form-control text-sm-center"
+            <input v-model="exerciseRequest.weight" value="0" type="number" class="form-control text-sm-center"
                    id="autoSizingInput"
                    placeholder="Sisesta raskus, kg">
           </td>
@@ -65,9 +65,9 @@ export default {
         sets: null,
         weight: null,
       },
-      exerciseResponse: {
-
-      },
+      // exerciseResponse: {
+      //   exerciseId: 0,
+      // },
     }
   },
   methods: {

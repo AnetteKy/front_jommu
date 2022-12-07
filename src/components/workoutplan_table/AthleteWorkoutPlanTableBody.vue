@@ -6,7 +6,8 @@
     <td>{{exerciseTableInfo.sets}}</td>
     <td>{{exerciseTableInfo.weight}}</td>
     <td>
-      <button type="button" class="col-6 m-1 btn btn-success btn-sm">Eemalda</button>
+      <font-awesome-icon v-on:click="deleteExerciseFromTableEvent(exerciseTableInfo)" icon="fa-solid fa-trash" />
+<!--      <button v-on:click="deleteExerciseFromTableEvent(exerciseTableInfo)" type="button" class="col-6 m-1 btn btn-success btn-sm">Eemalda</button>-->
     </td>
   </tr>
   </tbody>
@@ -19,6 +20,12 @@ export default {
   },
   data: function () {
     return {}
+  },
+  methods: {
+
+    deleteExerciseFromTableEvent: function (exerciseTableInfo) {
+      this.$emit('deleteExerciseFromTableEvent', exerciseTableInfo)
+    }
   }
 }
 </script>

@@ -4,7 +4,8 @@
     <div class="row justify-content-around m-1">
       <div class="col-md-2">
         <h6>Vali treeningkava</h6>
-        <select v-on:change="changeWorkoutPlan" v-model="selectedWorkoutPlanId" class="form-select " aria-label="Default select example">
+        <select v-on:change="changeWorkoutPlan" v-model="selectedWorkoutPlanId" class="form-select "
+                aria-label="Default select example">
           <option selected disabled value="0">Treeningkava nimi</option>
           <option v-for="workoutPlan in workoutPlans" :key="workoutPlan.workoutPlanId"
                   :value="workoutPlan.workoutPlanId">
@@ -32,7 +33,9 @@
       <div class="col-6 justify-content-center">
         <h4>Hetkel koostamisel:</h4>
 
-        <AthleteWorkoutPlanTable :exercise-table-infos="exerciseTableInfos"/>
+        <AthleteWorkoutPlanTable :exercise-table-infos="exerciseTableInfos"
+                                 @deleteExerciseFromTableEvent="disableExerciseFromTable"
+        />
 
         <div class="row col-2 offset-10">
           <button type="button" class="btn btn-success ">VALMIS</button>
@@ -81,7 +84,7 @@ export default {
       },
 
       workoutPlanResponse: {
-        workoutPlanId: sessionStorage.getItem('workoutPlanId'),
+        workoutPlanId: 0,
         workoutPlanName: '',
       },
 
@@ -91,12 +94,12 @@ export default {
       },
 
       exerciseTableInfos: {
+        exerciseId: 0,
         workoutPlanId: 0,
         exerciseTemplateName: '',
         reps: 0,
         sets: 0,
-        weight: 0,
-        status: '',
+        weight: 0, status: '',
       },
 
 
@@ -108,21 +111,21 @@ export default {
         exerciseTemplateImgData: '',
         muscleGroupId: 0,
         muscleGroupName: ''
+      },
+      disableExerciseInfo: {
+        exerciseId: 0
       }
     }
   },
 
   methods: {
-clickNavigateToExerciseDescriptionView: function (exTemplMuscleInfo){
-  this.$router.push({
-    name:'exerciseDescriptionRoute',query:{
-      exerciseTemplateId: exTemplMuscleInfo.exerciseTemplateId,
-      exerciseTemplateName: exTemplMuscleInfo.exerciseTemplateName,
-      exerciseTemplateDescription: exTemplMuscleInfo.exerciseTemplateDescription
-    }
-  })
-},
-
+    clickNavigateToExerciseDescriptionView: function (exerciseTemplateId) {
+      this.$router.push({
+        name: 'exerciseDescriptionRoute', query: {
+          exerciseTemplateId: exerciseTemplateId
+        }
+      })
+    },
 
 
     addWorkoutPlanInfo: function () {
@@ -130,7 +133,7 @@ clickNavigateToExerciseDescriptionView: function (exTemplMuscleInfo){
       ).then(response => {
         this.workoutPlanResponse = response.data
         this.selectedWorkoutPlanId = this.workoutPlanResponse.workoutPlanId
-        sessionStorage.setItem('workoutPlanId', this.selectedWorkoutPlanId)
+        sessionStorage.setItem('workoutPlanId', this.workoutPlanResponse.workoutPlanId)
         this.getAllWorkoutPlanInfo()
         this.getAllExerciseTableInfo()
         console.log(response.data)
@@ -157,7 +160,7 @@ clickNavigateToExerciseDescriptionView: function (exTemplMuscleInfo){
         name: 'athleteAddExerciseRoute', query: {
           exerciseTemplateId: exTemplMuscleInfo.exerciseTemplateId,
           exerciseTemplateName: exTemplMuscleInfo.exerciseTemplateName,
-          workoutPlanId: this.workoutPlanResponse.workoutPlanId
+          workoutPlanId: this.selectedWorkoutPlanId
         }
       })
     },
@@ -170,6 +173,7 @@ clickNavigateToExerciseDescriptionView: function (exTemplMuscleInfo){
           }
       ).then(response => {
         this.exerciseTableInfos = response.data
+        // sessionStorage.setItem('exerciseId', this.exerciseTableInfos.exerciseId)
         console.log(response.data)
       }).catch(error => {
         console.log(error)
@@ -177,7 +181,19 @@ clickNavigateToExerciseDescriptionView: function (exTemplMuscleInfo){
     },
 
     changeWorkoutPlan: function () {
+      sessionStorage.setItem('workoutPlanId', this.selectedWorkoutPlanId)
       this.getAllExerciseTableInfo()
+    },
+
+    disableExerciseFromTable: function (exerciseTableInfo) {
+      this.disableExerciseInfo.exerciseId = exerciseTableInfo.exerciseId
+      this.$http.patch("/disable/exercise/info", this.disableExerciseInfo
+      ).then(response => {
+        this.getAllExerciseTableInfo()
+        console.log(response.data)
+      }).catch(error => {
+        console.log(error)
+      })
     },
 
     getAllExTempMuscleInfo: function () {
@@ -190,8 +206,8 @@ clickNavigateToExerciseDescriptionView: function (exTemplMuscleInfo){
             console.log(error)
           })
     },
-
   },
+
   beforeMount() {
     if (this.selectedWorkoutPlanId !== '0') {
       this.getAllExerciseTableInfo()
