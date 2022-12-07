@@ -36,6 +36,10 @@
     font-family: Tahoma sans-serif;
 }
 
+.athleteWorkoutPlanView {
+    background-image: url("");
+}
+
 .addExerciseView {
     background-image: url("../photo/gym15.webp");
     background-repeat: no-repeat;
