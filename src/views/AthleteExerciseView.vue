@@ -4,7 +4,8 @@
     <div class="row justify-content-around m-1">
       <div class="col-md-2">
         <h6>Vali treeningkava</h6>
-        <select v-on:change="changeWorkoutPlan" v-model="selectedWorkoutPlanId" class="form-select " aria-label="Default select example">
+        <select v-on:change="changeWorkoutPlan" v-model="selectedWorkoutPlanId" class="form-select "
+                aria-label="Default select example">
           <option selected disabled value="0">Treeningkava nimi</option>
           <option v-for="workoutPlan in workoutPlans" :key="workoutPlan.workoutPlanId"
                   :value="workoutPlan.workoutPlanId">
@@ -48,8 +49,6 @@
                 class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">KÕIK
         </button>
         <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Kõht</button>
-        <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Jalg</button>
-        <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Käsi</button>
       </div>
       <div class="col-md-5">
         <h4 class="mb-3">Harjutused</h4>
@@ -108,22 +107,21 @@ export default {
         exerciseTemplateImgData: '',
         muscleGroupId: 0,
         muscleGroupName: ''
-      }
+      },
+
     }
   },
 
   methods: {
-clickNavigateToExerciseDescriptionView: function (exTemplMuscleInfo){
-  this.$router.push({
-    name:'exerciseDescriptionRoute',query:{
-      exerciseTemplateId: exTemplMuscleInfo.exerciseTemplateId,
-      exerciseTemplateName: exTemplMuscleInfo.exerciseTemplateName,
-      exerciseTemplateDescription: exTemplMuscleInfo.exerciseTemplateDescription
-    }
-  })
-},
-
-
+    clickNavigateToExerciseDescriptionView: function (exTemplMuscleInfo) {
+      this.$router.push({
+        name: 'exerciseDescriptionRoute', query: {
+          exerciseTemplateId: exTemplMuscleInfo.exerciseTemplateId,
+          exerciseTemplateName: exTemplMuscleInfo.exerciseTemplateName,
+          exerciseTemplateDescription: exTemplMuscleInfo.exerciseTemplateDescription
+        }
+      })
+    },
 
     addWorkoutPlanInfo: function () {
       this.$http.post("/workoutplan/info", this.workoutPlanRequest
@@ -189,6 +187,20 @@ clickNavigateToExerciseDescriptionView: function (exTemplMuscleInfo){
           .catch(error => {
             console.log(error)
           })
+    },
+
+    getExTempByMuscleGroupId: function (selectedMuscleGroupId) {
+      this.$http.get("/extemp/bymusclegroupid", {
+            params: {
+              muscleGroupId: this.selectedMuscleGroupId,
+            }
+          }
+      ).then(response => {
+        this.exTempMuscleGroupInfos = response.data
+        console.log(response.data)
+      }).catch(error => {
+        console.log(error)
+      })
     },
 
   },

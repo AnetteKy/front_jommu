@@ -18,11 +18,22 @@
 }
 
 .registerView {
-    background-image: url("https://3strong.com/wp-content/uploads/2019/02/4-Benefits-of-Joining-Group-Fitness-Classes.jpg");
+    background-image: url("../photo/registerview.webp");
     background-repeat: no-repeat;
     background-size: cover;
 
     /*https://3strong.com/wp-content/uploads/2019/02/4-Benefits-of-Joining-Group-Fitness-Classes.jpg*/
+}
+
+.athleteHomeView {
+    background-image: url("../photo/home2.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.quoteFont {
+    font-style: italic;
+    font-family: Tahoma sans-serif;
 }
 
 .addExerciseView {
@@ -61,10 +72,8 @@
 }
 
 .opacityregister {
-    background-color: rgba(88,63,80,0.48);
-    opacity: 90%;
-    padding: 20px;
-    border: 2px rgba(71,58,67,0.96) solid;
+    background-color: rgba(88, 63, 80, 0.48);
+    border: 2px rgba(71, 58, 67, 0.96) solid;
     border-radius: 1.5em;
 }
 
@@ -84,5 +93,50 @@
 .myPicSize {
     height: 200px;
 }
+
+.button-25 {
+    background-color: rgba(130, 151, 141, 0.69);
+    border: 1px solid #2A8387;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: Avenir, Helvetica, Arial, sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 100%;
+    margin: 0;
+    outline: 0;
+    padding: 11px 15px 12px;
+    text-align: center;
+    transition: box-shadow .05s ease-in-out, opacity .05s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+}
+
+/*.button-25:hover {*/
+/*    box-shadow: rgba(255, 255, 255, 0.3) 0 0 2px inset, rgba(0, 0, 0, 0.4) 0 1px 2px;*/
+/*    text-decoration: none;*/
+/*    transition-duration: .15s, .15s;*/
+/*}*/
+
+/*.button-25:active {*/
+/*    box-shadow: rgba(0, 0, 0, 0.15) 0 2px 4px inset, rgba(0, 0, 0, 0.4) 0 1px 1px;*/
+/*}*/
+
+/*.button-25:disabled {*/
+/*    cursor: not-allowed;*/
+/*    opacity: .6;*/
+/*}*/
+
+/*.button-25:disabled:active {*/
+/*    pointer-events: none;*/
+/*}*/
+
+/*.button-25:disabled:hover {*/
+/*    box-shadow: none;*/
+/*}*/
 
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav class="container d-flex">
-      <div class="col d-flex justify-content-end offset-3">
+      <div class="gap-sm-2 col d-flex justify-content-end offset-3">
         <router-link to="/athlete/home">Kodu</router-link>
         |
         <router-link to="/athlete/workoutplan">Treeningkava</router-link>
