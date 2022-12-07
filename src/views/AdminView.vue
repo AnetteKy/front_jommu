@@ -29,7 +29,7 @@
         <img src="../images/default.jpg" class="myPicSize">
       </div>
       <div v-else>
-        <img :src="pictureInfo.imgData" class="myPicSize">
+        <img :src="pictureInfo.imgData" class="myPicSize" >
       </div>
 
 
@@ -79,9 +79,11 @@ export default {
     
     setPicture: function (picture) {
       this.pictureInfo.imgData = picture
+      // sessionStorage.setItem('imgData', this.pictureInfo.imgData)
     },
 
     addPicture: function () {
+
       this.$http.patch("/photo", this.pictureInfo
       ).then(response => {
         console.log(response.data)
@@ -98,6 +100,7 @@ export default {
           }
       ).then(response => {
         this.pictureInfo.imgData = response.data.imgData
+        // sessionStorage.setItem('imgData', this.pictureInfo.imgData)
         console.log(response.data)
       }).catch(error => {
         console.log(error)
