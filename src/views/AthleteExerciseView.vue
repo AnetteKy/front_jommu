@@ -50,8 +50,14 @@
         <button v-on:click="getAllExTempMuscleInfo" type="button"
                 class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">KÕIK
         </button>
-        <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Kõht</button>
+
+        <button v-for="muscleGroup in muscleGroups" :key="muscleGroup.muscleId" :value="muscleGroup.muscleId"
+                v-model="selectedMuscleGroupId" v-on:click="getExTempByMuscleGroupId"
+                type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">
+          {{ muscleGroup.muscleName }}
+        </button>
       </div>
+
       <div class="col-md-5">
         <h4 class="mb-3">Harjutused</h4>
 
@@ -101,7 +107,6 @@ export default {
         status: '',
       },
 
-
       exTempMuscleGroupInfos: {
         exTempMuscleGroupId: 0,
         exerciseTemplateId: 0,
@@ -111,9 +116,20 @@ export default {
         muscleGroupId: 0,
         muscleGroupName: ''
       },
+
       disableExerciseInfo: {
         exerciseId: 0
-      }
+      },
+
+      muscleGroups: [
+        {
+          muscleId: 0,
+          muscleName: ''
+        }
+      ],
+
+      selectedMuscleGroupId: 0,
+
     }
   },
 
@@ -206,10 +222,10 @@ export default {
           })
     },
 
-    getExTempByMuscleGroupId: function (selectedMuscleGroupId) {
+    getExTempByMuscleGroupId: function () {
       this.$http.get("/extemp/bymusclegroupid", {
             params: {
-              muscleGroupId: this.selectedMuscleGroupId,
+              muscleGroupId: this.selectedMuscleGroupId
             }
           }
       ).then(response => {
@@ -220,6 +236,24 @@ export default {
       })
     },
 
+    // changeExTempByMuscleGroupId: function () {
+    //   sessionStorage.setItem('muscleGroupId', this.selectedMuscleGroupId)
+    //   this.getExTempByMuscleGroupId();
+    // },
+
+    getAllMuscleGroups: function () {
+      this.$http.get("/all/musclegroups")
+          .then(response => {
+            this.muscleGroups = response.data
+            // this.selectedMuscleGroupId = this.muscleGroups.muscleId
+            // sessionStorage.setItem('muscleGroupId', this.muscleGroups.muscleId)
+            console.log(response.data)
+          })
+          .catch(error => {
+            console.log(error)
+          })
+    },
+
   },
   beforeMount() {
     if (this.selectedWorkoutPlanId !== '0') {
@@ -227,7 +261,8 @@ export default {
     }
 
     this.getAllWorkoutPlanInfo();
-    this.getAllExTempMuscleInfo()
+    this.getAllExTempMuscleInfo();
+    this.getAllMuscleGroups()
   }
 }
 </script>
