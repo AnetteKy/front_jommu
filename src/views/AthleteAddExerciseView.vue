@@ -83,6 +83,7 @@ export default {
     },
 
     navigateToExerciseView: function () {
+      // this.exerciseRequest.exerciseTemplateId = sessionStorage.setItem('exerciseTemplateId', this.exerciseRequest.exerciseTemplateId)
       this.$router.push({name: 'athleteExerciseRoute'})
     }
   }

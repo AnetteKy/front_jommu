@@ -4,7 +4,8 @@
     <div class="row justify-content-around m-1">
       <div class="col-md-2">
         <h6>Vali treeningkava</h6>
-        <select v-on:change="changeWorkoutPlan" v-model="selectedWorkoutPlanId" class="form-select " aria-label="Default select example">
+        <select v-on:change="changeWorkoutPlan" v-model="selectedWorkoutPlanId" class="form-select "
+                aria-label="Default select example">
           <option selected disabled value="0">Treeningkava nimi</option>
           <option v-for="workoutPlan in workoutPlans" :key="workoutPlan.workoutPlanId"
                   :value="workoutPlan.workoutPlanId">
@@ -108,22 +109,21 @@ export default {
         exerciseTemplateImgData: '',
         muscleGroupId: 0,
         muscleGroupName: ''
-      }
+      },
+
+
     }
   },
 
   methods: {
-clickNavigateToExerciseDescriptionView: function (exTemplMuscleInfo){
-  this.$router.push({
-    name:'exerciseDescriptionRoute',query:{
-      exerciseTemplateId: exTemplMuscleInfo.exerciseTemplateId,
-      exerciseTemplateName: exTemplMuscleInfo.exerciseTemplateName,
-      exerciseTemplateDescription: exTemplMuscleInfo.exerciseTemplateDescription
-    }
-  })
-},
+    clickNavigateToExerciseDescriptionView: function (exerciseTempId) {
+      this.$router.push({
+        name: 'exerciseDescriptionRoute', query: {
+          exerciseTempId: exerciseTempId
 
-
+        }
+      })
+    },
 
     addWorkoutPlanInfo: function () {
       this.$http.post("/workoutplan/info", this.workoutPlanRequest
