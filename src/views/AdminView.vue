@@ -65,7 +65,6 @@ export default {
   },
 
   methods: {
-
     getAllExerciseInfo: function () {
       this.$http.get("/exercise/info")
           .then(response => {
@@ -79,6 +78,8 @@ export default {
     
     setPicture: function (picture) {
       this.pictureInfo.imgData = picture
+
+
     },
 
     addPicture: function () {
