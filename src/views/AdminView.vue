@@ -1,43 +1,54 @@
 <template>
-  <div class="col-3">
+  <div class="motherFlex adminView">
+    <div class="bg-light bg-opacity-75  container col-lg-4 d-flex align-items-center ">
+      <div class="col-md-12">
+        <h3>Lisa uus harjutus</h3>
+        <select v-on:change="getExTempPicture" v-model="pictureInfo.exerciseTempId" class="form-select mb-2"
+                aria-label="Default select example">
+          <option selected disabled value="0">Vali harjutus</option>
+          <option v-for="template in exerciseTemplates" :key="template.exerciseTempId" :value="template.exerciseTempId">
+            {{ template.exerciseTempName }}
+          </option>
+        </select>
 
-    <select v-on:change="getExTempPicture" v-model="pictureInfo.exerciseTempId" class="form-select" aria-label="Default select example">
-      <option selected disabled value="0">Vali harjutus</option>
-      <option v-for="template in exerciseTemplates" :key="template.exerciseTempId" :value="template.exerciseTempId">{{ template.exerciseTempName }}</option>
-    </select>
+        <!--        <div class="dropdown">-->
+        <!--          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"-->
+        <!--                  aria-expanded="false">-->
+        <!--            Harjutuste valik-->
+        <!--          </button>-->
+        <!--          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">-->
+        <!--            <li v-for="template in exerciseTemplates" :key="template.exerciseTempId" :value="template.exerciseTempId"><a class="dropdown-item" href="#"></a>{{ template.exerciseTempName }}</li>-->
 
-<!--        <div class="dropdown">-->
-<!--          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"-->
-<!--                  aria-expanded="false">-->
-<!--            Harjutuste valik-->
-<!--          </button>-->
-<!--          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">-->
-<!--            <li v-for="template in exerciseTemplates" :key="template.exerciseTempId" :value="template.exerciseTempId"><a class="dropdown-item" href="#"></a>{{ template.exerciseTempName }}</li>-->
+        <!--          </ul>-->
+        <!--        </div>-->
 
-<!--          </ul>-->
-<!--        </div>-->
+        <div>
+          <ImageInput @pictureInputSuccess="setPicture"/>
+        </div>
 
-<div>
-  <ImageInput @pictureInputSuccess="setPicture"/>
-</div>
-
-    <button v-on:click="addPicture" type="button" class="btn btn-primary">Salvesta pilt</button>
+        <button v-on:click="addPicture" type="button" class="btn btn-primary mb-2">Salvesta pilt</button>
 
 
-      <!--  todo: Kui  imgData == null   -->
-      <div v-if="pictureInfo.imgData === null">
-        <img src="../images/default.jpg" class="myPicSize">
+        <!--  todo: Kui  imgData == null   -->
+        <div v-if="pictureInfo.imgData === null">
+          <img src="../images/default.jpg" class="myPicSize">
+        </div>
+        <div v-else>
+          <img :src="pictureInfo.imgData" class="myPicSize">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Sisesta harjutuse kirjeldus</label>
+          <textarea class="form-control mb-2" id="exampleFormControlTextarea1" rows="5">{{exerciseTemplates.description}}</textarea>
+          <button v-on:click="addDescription" type="button" class="btn btn-primary mb-2">Salvesta kirjeldus</button>
+        </div>
       </div>
-      <div v-else>
-        <img :src="pictureInfo.imgData" class="myPicSize" >
-      </div>
-
-
+    </div>
   </div>
 </template>
 
 <script>
 import ImageInput from "@/components/image/ImageInput";
+
 export default {
   name: "AdminView",
   components: {ImageInput},
@@ -53,6 +64,7 @@ export default {
 
       pictureInfo: {
         exerciseTempId: 0,
+        // description: '',
         imgData: '',
       },
 
@@ -76,7 +88,7 @@ export default {
             console.log(error)
           })
     },
-    
+
     setPicture: function (picture) {
       this.pictureInfo.imgData = picture
       // sessionStorage.setItem('imgData', this.pictureInfo.imgData)
@@ -100,6 +112,7 @@ export default {
           }
       ).then(response => {
         this.pictureInfo.imgData = response.data.imgData
+        // this.pictureInfo.description = response.data.description
         // sessionStorage.setItem('imgData', this.pictureInfo.imgData)
         console.log(response.data)
       }).catch(error => {
