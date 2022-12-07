@@ -51,8 +51,6 @@
                 class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">KÕIK
         </button>
         <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Kõht</button>
-        <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Jalg</button>
-        <button type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">Käsi</button>
       </div>
       <div class="col-md-5">
         <h4 class="mb-3">Harjutused</h4>
@@ -99,7 +97,8 @@ export default {
         exerciseTemplateName: '',
         reps: 0,
         sets: 0,
-        weight: 0, status: '',
+        weight: 0,
+        status: '',
       },
 
 
@@ -206,8 +205,22 @@ export default {
             console.log(error)
           })
     },
-  },
 
+    getExTempByMuscleGroupId: function (selectedMuscleGroupId) {
+      this.$http.get("/extemp/bymusclegroupid", {
+            params: {
+              muscleGroupId: this.selectedMuscleGroupId,
+            }
+          }
+      ).then(response => {
+        this.exTempMuscleGroupInfos = response.data
+        console.log(response.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
+  },
   beforeMount() {
     if (this.selectedWorkoutPlanId !== '0') {
       this.getAllExerciseTableInfo()

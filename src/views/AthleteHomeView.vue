@@ -1,23 +1,32 @@
 <template>
-  <div class="motherFlex d-flex flex-grow-1 flex-column">
+  <div class="motherFlex flex-column athleteHomeView">
     <AthleteNavBar/>
 
-    <div>
+    <div class="mb-4">
       <h1>Tere tulemast, {{ username }}</h1>
-      <br>
-      <h4>Päevatsitaat: "Fitness - if it came in a bottle, everybody would have a great body."</h4>
     </div>
+    <div class="mb-4">
+      <h4 class="quoteFont"><em>Päevatsitaat: "Sa oled ainult ühe trenni kaugusel suurepärasest tujust!"</em></h4>
+    </div>
+
+
 
     <div class="row-cols-8 justify-content-md-center">
       <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-        <button v-on:click="navigateToWorkoutPlanView" type="button" class="btn btn-outline-secondary btn-lg m-5">Vaata
-          oma treeningkavasid
-        </button>
+
+        <button v-on:click="navigateToWorkoutPlanView" class="button-25 btn-lg col-3 m-5" role="button">Vaata oma treeningkavasid</button>
+
+<!--        <button v-on:click="navigateToWorkoutPlanView" type="button" class="btn btn-outline-secondary btn-lg m-5">Vaata-->
+<!--          oma treeningkavasid-->
+<!--        </button>-->
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-        <button v-on:click="navigateToExerciseView" type="button" class="btn btn-outline-secondary btn-lg m-5">Koosta
-          treeningkava
-        </button>
+
+        <button v-on:click="navigateToExerciseView" class="button-25 btn-lg col-3 m-1" role="button">Koosta uus treeningkava</button>
+
+<!--        <button v-on:click="navigateToExerciseView" type="button" class="btn btn-outline-secondary btn-lg m-5">Koosta-->
+<!--          treeningkava-->
+<!--        </button>-->
       </div>
     </div>
 
