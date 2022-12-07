@@ -48,12 +48,12 @@ export default {
         exerciseTempId: 0,
         exerciseTempName: '',
         description: '',
-        imgData: ''
+        imgData: null
       },
 
       pictureInfo: {
         exerciseTempId: 0,
-        imgData: '',
+        imgData: null,
       },
 
       pictureResponse: {

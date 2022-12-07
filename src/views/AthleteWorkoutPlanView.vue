@@ -1,9 +1,7 @@
 <template>
 
   <div class="motherFlex flex-column ">
-
     <AthleteNavBar/>
-
     <div class="row justify-content-around m-1">
       <div class="col-md-2">
         <h5>Minu treeningkavad</h5>
@@ -36,13 +34,11 @@
     <div class="row justify-content-center m-3">
       <div class="col-6 justify-content-center">
         <h2 class="col col-4 m-3">Minu treeningkavad</h2>
-        <h5 class="col col-4 m-1">(treeningkava nimi)</h5>
+        <h5 class="col col-4 m-1">{{ workoutPlanInfos.workoutPlanName }}</h5>
 
-        <!--          <button v-on:click="navigateToExerciseView"-->
-        <!--                  type="button" class="col col-1 m-1 btn btn-success">Muuda</button>-->
-        <!--          <button type="button" class="col col-1 m-1 btn btn-success">Kustuta</button>-->
 
-        <AthleteWorkoutPlanTable/>
+        <AthleteSavedWorkoutPlanTable :workout-plan-infos="workoutPlanInfos"/>
+
 
         <div class="row col-2 offset-10">
           <button type="button" class="btn btn-success ">Soorita kava</button>
@@ -53,10 +49,7 @@
         <div class="row col-2 offset-10">
           <button type="button" class="btn btn-success ">Kustuta kava</button>
         </div>
-
       </div>
-
-
     </div>
   </div>
 
@@ -65,24 +58,50 @@
 <script>
 
 import AthleteNavBar from "@/components/navbar/AthleteNavBar";
-import AthleteWorkoutPlanTable from "@/components/workoutplan_table/AthleteWorkoutPlanTable";
+import AthleteSavedWorkoutPlanTable from "@/components/workoutplan_table_saved/AthleteSavedWorkoutPlanTable";
 
 export default {
   name: "AthleteWorkoutPlanView",
-  components: {AthleteWorkoutPlanTable, AthleteNavBar},
+  components: {AthleteSavedWorkoutPlanTable, AthleteNavBar},
 
   data: function () {
     return {
-      displayDeleteButton: false
+
+      workoutPlanInfos: {
+        exerciseId: 0,
+        workoutPlanId: 0,
+        workoutPlanName: '',
+        workoutPlanStatus: '',
+        exerciseTemplateId: 0,  //?
+        exerciseTemplateName: '',
+        reps: 0,
+        sets: 0,
+        weight: 0,
+        exercisesStatus: '',
+      }
     }
   },
 
   methods: {
-    navigateToExerciseView: function () {
-      this.$router.push({name: 'athleteExerciseRoute'}),
-          this.displayDeleteButton = true
+
+    getAllWorkoutPlanInfo: function () {
+      this.$http.get("/workoutPlan/table/info")
+          .then(response => {
+            this.workoutPlanInfos = response.data
+            console.log(response.data)
+          })
+          .catch(error => {
+            console.log(error)
+          })
     },
 
+    navigateToExerciseView: function () {
+      this.$router.push({name: 'athleteExerciseRoute'})
+    }
+  },
+
+  beforeMount() {
+    this.getAllWorkoutPlanInfo()
   }
 
 }
