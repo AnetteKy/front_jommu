@@ -14,7 +14,7 @@
     <div class="row-cols-8 justify-content-md-center">
       <div class="d-grid gap-2 d-md-flex justify-content-md-center">
 
-        <button v-on:click="navigateToWorkoutPlanView" class="button-25 btn-lg col-3 m-5" role="button">Vaata oma treeningkavasid</button>
+        <button v-on:click="navigateToWorkoutPlanView" class="button-25 btn-lg col-2 m-5" role="button">Vaata oma treeningkavasid</button>
 
 <!--        <button v-on:click="navigateToWorkoutPlanView" type="button" class="btn btn-outline-secondary btn-lg m-5">Vaata-->
 <!--          oma treeningkavasid-->
@@ -22,7 +22,7 @@
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-center">
 
-        <button v-on:click="navigateToExerciseView" class="button-25 btn-lg col-3 m-1" role="button">Koosta uus treeningkava</button>
+        <button v-on:click="navigateToExerciseView" class="button-25 btn-lg col-2 m-1" role="button">Koosta uus treeningkava</button>
 
 <!--        <button v-on:click="navigateToExerciseView" type="button" class="btn btn-outline-secondary btn-lg m-5">Koosta-->
 <!--          treeningkava-->
