@@ -1,5 +1,5 @@
 <template>
-  <table class="table table-hover table-bordered exerciseViewTable1">
+  <table class="table exerciseViewTable1">
     <ExerciseTableHead/>
     <ExerciseTableBody :ex-temp-muscle-group-infos="exTempMuscleGroupInfos" v-on="$listeners"/>
   </table>

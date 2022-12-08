@@ -1,6 +1,6 @@
 <template>
 
-  <table class="table">
+  <table class="table ">
     <AthleteWorkoutPlanTableHead/>
     <AthleteWorkoutPlanTableBody :exercise-table-infos="exerciseTableInfos" v-on="$listeners"/>
   </table>

@@ -9,13 +9,13 @@
     <div class="row d-flex flex-grow-1">
 
       <div class="col m-5">
-        <button v-on:click="displayTrainerLoginOnClick" type="button" class="btn btn-outline-primary btn-lg">TREENER
+        <button v-on:click="displayTrainerLoginOnClick" type="button" class="button-28 btn-lg">TREENER
         </button>
         <TrainerLogin v-if="displayTrainerLogin"/>
       </div>
 
       <div class="col m-5">
-        <button v-on:click="displayAthleteLoginOnClick" type="button" class="btn btn-outline-success btn-lg">
+        <button v-on:click="displayAthleteLoginOnClick" type="button" class="button-29 btn-lg">
           TREENIJA
         </button>
         <AthleteLogin v-if="displayAthleteLogin"/>

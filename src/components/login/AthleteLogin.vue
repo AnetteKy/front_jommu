@@ -1,5 +1,5 @@
 <template>
-  <div class="transparentbg">
+  <div class="opacityrole">
     <div class="row justify-content-center m-3">
       <div class="input-group w-50">
         <input placeholder="Kasutajanimi" type="text" class="form-control" aria-label="Sizing example input"
@@ -15,10 +15,10 @@
 
     <AlertError :error-response="errorResponse"/>
 
-    <button v-on:click="athleteLogin" class="btn btn-success" type="submit">Logi sisse</button>
+    <button v-on:click="athleteLogin" class="col-4 offset-4  button-29" type="submit">Logi sisse</button>
     <div class="row justify-content-center">
-      <label class="mt-5 font-color">Ei oma veel kontot?</label>
-      <button v-on:click="athleteRegister" type="button" class="btn btn-secondary btn-sm w-25">Registreeri</button>
+      <label class="mt-5"><b>Ei oma veel kontot?</b></label>
+      <button v-on:click="athleteRegister" type="button" class="btn btn-secondary btn-sm w-25 mb-5">Registreeri</button>
     </div>
   </div>
 </template>

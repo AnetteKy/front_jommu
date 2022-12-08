@@ -6,7 +6,7 @@
     </div>
 
     <div class="row-cols-md-3 col-6 d-flex m-4">
-      <h3>Täida väljad:</h3>
+      <h3><u>Täida väljad:</u></h3>
     </div>
 
     <div class="row-cols-md-3 col-6 d-flex offset-1 justify-content-center">
@@ -43,7 +43,7 @@
     </div>
 
     <div class="row col-1 justify-content-center d-flex offset-6">
-      <button v-on:click="addExerciseAdditionalInfo" type="button" class="btn btn-success">
+      <button v-on:click="addExerciseAdditionalInfo" type="button" class="button-25">
         Valmis
       </button>
     </div>

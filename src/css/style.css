@@ -23,7 +23,7 @@
 /*}*/
 
 .roleView {
-    background-image: url("../photo/registerbackground.png");
+    background-image: url("../photo/registerview.webp");
     background-repeat: no-repeat;
     background-size: cover;
 }.adminView {
@@ -69,7 +69,7 @@
 }
 
 .opacityworkout {
-    background-color: rgba(213,218,220,0.80);
+    background-color: rgba(194,200,199,0.85);
     /*border: 2px rgba(71, 58, 67, 0.96) solid;*/
     padding: 2em;
     border-radius: 1.5em;
@@ -96,8 +96,13 @@
 }
 
 .exerciseViewTable1 {
-    background-color: white;
-    opacity: 100%;
+    background-color: rgba(207,208,207,0.95);
+    /*border-radius: 1em;*/
+}
+
+.exerciseViewTable2 {
+    background-color: rgba(187,188,187,0.75);
+    border-radius: 1em;
 }
 
 .myApp {
@@ -123,10 +128,20 @@
     border: 2px rgba(71, 58, 67, 0.96) solid;
     border-radius: 1.5em;
 }
+.opacityrole {
+    background-color: rgba(217,213,208,0.50);
+    border: 2px rgba(71, 58, 67, 0.96) solid;
+    border-radius: 1.5em;
+}
 
 .opacityhomeview {
     background-color: rgba(120,125,118,0.25);
     border: 2px rgba(176,175,165,0.92) solid;
+    border-radius: 1.5em;
+}
+.opacityexerciseview {
+    background-color: rgba(120,125,118,0.18);
+    border: 2px rgba(202,203,203,0.55) solid;
     border-radius: 1.5em;
 }
 
@@ -136,10 +151,10 @@
 
 .inpubox-style {
     background-color: white;
-    opacity: 75%;
+    opacity: 85%;
 }
 
-.font-color {
+.font-colorrr {
     color: white;
 }
 
@@ -149,8 +164,73 @@
 
 .button-25 {
     background-color: rgba(98,112,79,0.8);
-    border: 1px solid #2A8387;
+    border: 1px solid rgba(98,112,79,0.8);
     border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: Avenir, Helvetica, Arial, sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 100%;
+    margin: 0;
+    outline: 0;
+    padding: 11px 15px 12px;
+    text-align: center;
+    transition: box-shadow .05s ease-in-out, opacity .05s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+}
+.button-27 {
+    background-color: rgba(98,112,79,1);
+    border: 2px solid black;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: Avenir, Helvetica, Arial, sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 100%;
+    margin: 0;
+    outline: 0;
+    padding: 11px 15px 12px;
+    text-align: center;
+    transition: box-shadow .05s ease-in-out, opacity .05s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+}
+
+.button-28 {
+    background-color: rgba(187,51,72,0.86);
+    border: 2px #423643 solid;
+    border-radius: 0.5em;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: Avenir, Helvetica, Arial, sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 100%;
+    margin: 0;
+    outline: 0;
+    padding: 11px 15px 12px;
+    text-align: center;
+    transition: box-shadow .05s ease-in-out, opacity .05s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+}
+
+.button-29 {
+    background-color: rgba(170,145,67,0.86);
+    border: 2px #423643 solid;
+    border-radius: 0.5em;
     box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
     color: #FFFFFF;
     cursor: pointer;

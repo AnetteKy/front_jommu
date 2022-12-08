@@ -2,8 +2,8 @@
   <div class="motherFlex flex-column exerciseView">
     <AthleteNavBar/>
 
-    <div class="mb-5 mt-5">
-      <div class="row justify-content-around mb-4">
+    <div class="mb-5 mt-5 ms-2 me-2">
+      <div class="row justify-content-around mb-4 mt-5">
         <div class="col-md-2">
           <h6><b>Vali treeningkava</b></h6>
           <select v-on:change="changeWorkoutPlan" v-model="selectedWorkoutPlanId" class="form-select "
@@ -24,7 +24,7 @@
                    placeholder="Sisesta treeningkava nimi">
           </div>
           <div class="row col-lg-6">
-            <button v-on:click="addWorkoutPlanInfo" type="button" class="btn btn-success">
+            <button v-on:click="addWorkoutPlanInfo" type="button" class="button-25">
               +LISA treeningkava
             </button>
           </div>
@@ -32,7 +32,7 @@
       </div>
 
       <div v-if="selectedWorkoutPlanId !== '0'" class="row justify-content-center mt-5 mb-5">
-        <div class="col-6 justify-content-center">
+        <div class=" col-6 justify-content-center">
           <h3 class="mb-5"><u>Hetkel koostamisel:</u></h3>
 
           <AthleteWorkoutPlanTable :exercise-table-infos="exerciseTableInfos"
@@ -40,7 +40,7 @@
           />
 
           <div class="row col-2 offset-10">
-            <button v-on:click="navigateToWorkoutPlanView" type="button" class="btn btn-success ">VALMIS</button>
+            <button v-on:click="navigateToWorkoutPlanView" type="button" class="button-25">VALMIS</button>
           </div>
         </div>
       </div>
@@ -50,12 +50,12 @@
         <div class="col-3">
           <h5 class="mb-3"><b>Filtreeri harjutusi</b></h5>
           <button v-on:click="getAllExTempMuscleInfo" type="button"
-                  class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">KÕIK
+                  class="button-27 d-grid gap-2 col-6 mb-2 mx-auto">KÕIK
           </button>
 
           <button v-for="muscleGroup in muscleGroups" :key="muscleGroup.muscleId" :value="muscleGroup.muscleId"
                   v-model="selectedMuscleGroupId" v-on:click="getExTempByMuscleGroupId(muscleGroup.muscleId)"
-                  type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">
+                  type="button" class="button-25 d-grid gap-2 col-6 mb-2 mx-auto">
             {{ muscleGroup.muscleName }}
           </button>
         </div>

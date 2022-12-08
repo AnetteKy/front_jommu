@@ -35,7 +35,7 @@
 
 
 
-        <div class="font-color input-group mb-3">
+        <div class="font-colorrr input-group mb-3">
           <div class="text form-check m-2" v-for="singleGender in genders">
             <input v-model="registerRequest.gender" v-bind:value="singleGender.code"
                    class="shadow-lg form-check-input" type="radio"
@@ -98,7 +98,7 @@
         </div>
 
         <div>
-          <button v-on:click="registerUser" class="btn col-lg-5 btn-outline-light m-3" type="submit">Registreeri</button>
+          <button v-on:click="registerUser" class="btn col-lg-5 btn-light m-3" type="submit">Registreeri</button>
         </div>
       </div>
     </div>

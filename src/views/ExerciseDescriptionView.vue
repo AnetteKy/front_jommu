@@ -1,7 +1,7 @@
 <template>
 
   <div class="motherFlex flex-column exerciseView">
-    <div class="card col-6 offset-3">
+    <div class="mt-5 card col-6 offset-3">
       <div v-if="descriptionInfos.imgData == 'null' ">
         <img src="../images/default.jpg" class="myPicSize">
       </div>
@@ -11,7 +11,7 @@
       <div class="card-body">
         <h5 class="card-title">{{ descriptionInfos.exerciseTempName }}</h5>
         <p class="card-text">{{ descriptionInfos.description }}</p>
-        <button v-on:click="navigateToExerciseView" class="btn btn-primary">Sulge</button>
+        <button v-on:click="navigateToExerciseView" class="btn btn-secondary">Sulge</button>
       </div>
     </div>
   </div>
