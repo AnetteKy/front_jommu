@@ -15,6 +15,14 @@
     background-image: url("../photo/registerbackground.png");
     background-repeat: no-repeat;
     background-size: cover;
+}.adminView {
+    background-image: url("../photo/admin.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+ }.historyView {
+    background-image: url("../photo/history.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .registerView {
