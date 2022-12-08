@@ -11,26 +11,13 @@
           </option>
         </select>
 
-        <!--        <div class="dropdown">-->
-        <!--          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"-->
-        <!--                  aria-expanded="false">-->
-        <!--            Harjutuste valik-->
-        <!--          </button>-->
-        <!--          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">-->
-        <!--            <li v-for="template in exerciseTemplates" :key="template.exerciseTempId" :value="template.exerciseTempId"><a class="dropdown-item" href="#"></a>{{ template.exerciseTempName }}</li>-->
-
-        <!--          </ul>-->
-        <!--        </div>-->
-
         <div>
           <ImageInput @pictureInputSuccess="setPicture"/>
         </div>
 
         <button v-on:click="addPicture" type="button" class="btn btn-primary mb-2">Salvesta pilt</button>
 
-
-        <!--  todo: Kui  imgData == null   -->
-        <div v-if="pictureInfo.imgData === null">
+        <div v-if="pictureInfo.imgData === 'null'">
           <img src="../images/default.jpg" class="myPicSize">
         </div>
         <div v-else>
@@ -48,7 +35,6 @@
 
 <script>
 import ImageInput from "@/components/image/ImageInput";
-
 export default {
   name: "AdminView",
   components: {ImageInput},
@@ -59,18 +45,17 @@ export default {
         exerciseTempId: 0,
         exerciseTempName: '',
         description: '',
-        imgData: ''
+        imgData: 'null'
       },
 
       pictureInfo: {
         exerciseTempId: 0,
-        // description: '',
-        imgData: '',
+        imgData: 'null',
       },
 
       pictureResponse: {
         exerciseTempId: 0,
-        imgData: null,
+        imgData: 'null',
       }
 
     }
@@ -112,8 +97,6 @@ export default {
           }
       ).then(response => {
         this.pictureInfo.imgData = response.data.imgData
-        // this.pictureInfo.description = response.data.description
-        // sessionStorage.setItem('imgData', this.pictureInfo.imgData)
         console.log(response.data)
       }).catch(error => {
         console.log(error)
@@ -125,7 +108,5 @@ export default {
   beforeMount() {
     this.getAllExerciseInfo()
   }
-
 }
-
 </script>

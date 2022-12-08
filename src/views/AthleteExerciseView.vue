@@ -38,7 +38,7 @@
         />
 
         <div class="row col-2 offset-10">
-          <button type="button" class="btn btn-success ">VALMIS</button>
+          <button v-on:click="navigateToWorkoutPlanView" type="button" class="btn btn-success ">VALMIS</button>
         </div>
       </div>
     </div>
@@ -253,6 +253,10 @@ export default {
             console.log(error)
           })
     },
+
+    navigateToWorkoutPlanView: function () {
+      this.$router.push({name: 'athleteWorkoutPlanRoute'})
+    }
 
   },
   beforeMount() {

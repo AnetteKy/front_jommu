@@ -2,9 +2,12 @@
 
   <div class="motherFlex flex-column exerciseView">
     <div class="card col-6 offset-3">
-      <img v-if="descriptionInfos.imgData === null " src="../images/default.jpg" class="myPicSize">
-      <img v-else :src="descriptionInfos.imgData" class="myPicSize">
-
+      <div v-if="descriptionInfos.imgData == 'null' ">
+        <img src="../images/default.jpg" class="myPicSize">
+      </div>
+      <div v-else>
+        <img :src="descriptionInfos.imgData" class="myPicSize">
+      </div>
       <div class="card-body">
         <h5 class="card-title">{{ descriptionInfos.exerciseTempName }}</h5>
         <p class="card-text">{{ descriptionInfos.description }}</p>
@@ -19,11 +22,11 @@ export default {
   name: "ExerciseDescriptionView",
   data: function () {
     return {
+      exerciseTempId: this.$route.query.exerciseTemplateId,
       descriptionInfos: {
-        exerciseTempId: '',
         exerciseTempName: '',
         description: '',
-        imgData: ''
+        imgData: 'null'
       }
 
     }
@@ -32,7 +35,7 @@ export default {
     getDescriptionInfo: function () {
       this.$http.get("/description/info", {
             params: {
-              exerciseTempId: this.descriptionInfos.exerciseTempId,
+              exerciseTempId: this.exerciseTempId,
             }
           }
       ).then(response => {
@@ -43,19 +46,15 @@ export default {
       })
     },
 
-
     navigateToExerciseView: function () {
       this.$router.push({
         name: 'athleteExerciseRoute'
       })
     }
-
   },
   beforeMount() {
     this.getDescriptionInfo()
-
   }
 }
-
 </script>
 

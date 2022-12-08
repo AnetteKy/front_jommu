@@ -5,6 +5,10 @@
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
+.trashcan-icon {
+    height: 1.5em;
+}
+
 /*.borrrder {*/
 /*    border: dimgray ridge 3px;*/
 /*    border-radius: 1em;*/
