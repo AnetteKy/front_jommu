@@ -82,6 +82,7 @@ export default {
 
       this.$http.patch("/photo", this.pictureInfo
       ).then(response => {
+        alert("Pildi lisamine õnnestus!")
         console.log(response.data)
       }).catch(error => {
         console.log(error)
