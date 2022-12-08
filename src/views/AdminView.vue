@@ -25,7 +25,7 @@
 
 
       <!--  todo: Kui  imgData == null   -->
-      <div v-if="pictureInfo.imgData === null">
+      <div v-if="pictureInfo.imgData === 'null'">
         <img src="../images/default.jpg" class="myPicSize">
       </div>
       <div v-else>
@@ -48,17 +48,17 @@ export default {
         exerciseTempId: 0,
         exerciseTempName: '',
         description: '',
-        imgData: null
+        imgData: 'null'
       },
 
       pictureInfo: {
         exerciseTempId: 0,
-        imgData: null,
+        imgData: 'null',
       },
 
       pictureResponse: {
         exerciseTempId: 0,
-        imgData: null,
+        imgData: 'null',
       }
 
     }

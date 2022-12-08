@@ -34,7 +34,7 @@
     <div class="row justify-content-center m-3">
       <div class="col-6 justify-content-center">
         <h2 class="col col-4 m-3">Minu treeningkavad</h2>
-        <h5 class="col col-4 m-1">{{ workoutPlanInfos.workoutPlanName }}</h5>
+        <h5 class="col col-4 m-1">{{}}</h5>
 
 
         <AthleteSavedWorkoutPlanTable :workout-plan-infos="workoutPlanInfos"/>
@@ -67,18 +67,19 @@ export default {
   data: function () {
     return {
 
-      workoutPlanInfos: {
-        exerciseId: 0,
-        workoutPlanId: 0,
-        workoutPlanName: '',
-        workoutPlanStatus: '',
-        exerciseTemplateId: 0,  //?
-        exerciseTemplateName: '',
-        reps: 0,
-        sets: 0,
-        weight: 0,
-        exercisesStatus: '',
-      }
+      workoutPlanInfos: [
+        {
+          exerciseTableInfos: {
+            exerciseId: 0,
+            workoutPlanId: 0,
+            exerciseTemplateName: '',
+            reps: 0,
+            sets: 0,
+            weight: 0,
+            status: '',
+          },
+        }
+      ],
     }
   },
 

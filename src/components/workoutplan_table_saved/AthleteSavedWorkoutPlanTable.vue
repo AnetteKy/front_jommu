@@ -1,16 +1,30 @@
 <template>
   <table class="table">
-    <AthleteSavedWorkoutPlanTableHead/>
-    <AthleteSavedWorkoutPlanTableBody :workout-plan-infos="workoutPlanInfos" v-on="$listeners"/>
+    <tr v-for="workoutPlanTableInfo in workoutPlanInfos">
+      <thead class="table">
+      <tr>
+        <th scope="col">Harjutus</th>
+        <th scope="col">Kordus</th>
+        <th scope="col">Seeria</th>
+        <th scope="col">Raskus</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">{{ workoutPlanTableInfo.exerciseTemplateName }}</th>
+        <td>{{ workoutPlanTableInfo.reps }}</td>
+        <td>{{ workoutPlanTableInfo.sets }}</td>
+        <td>{{ workoutPlanTableInfo.weight }}</td>
+      </tr>
+      </tbody>
+    </tr>
   </table>
 </template>
 <script>
-import AthleteSavedWorkoutPlanTableHead from "@/components/workoutplan_table_saved/AthleteSavedWorkoutPlanTableHead";
-import AthleteSavedWorkoutPlanTableBody from "@/components/workoutplan_table_saved/AthleteSavedWorkoutPlanTableBody";
+
 
 export default {
   name: 'AthleteSavedWorkoutPlanTable',
-  components: {AthleteSavedWorkoutPlanTableBody, AthleteSavedWorkoutPlanTableHead},
   props: {
     workoutPlanInfos: {}
   }
