@@ -52,7 +52,7 @@
         </button>
 
         <button v-for="muscleGroup in muscleGroups" :key="muscleGroup.muscleId" :value="muscleGroup.muscleId"
-                v-model="selectedMuscleGroupId" v-on:click="getExTempByMuscleGroupId"
+                v-model="selectedMuscleGroupId" v-on:click="getExTempByMuscleGroupId(muscleGroup.muscleId)"
                 type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">
           {{ muscleGroup.muscleName }}
         </button>
@@ -222,10 +222,10 @@ export default {
           })
     },
 
-    getExTempByMuscleGroupId: function () {
+    getExTempByMuscleGroupId: function (muscleId) {
       this.$http.get("/extemp/bymusclegroupid", {
             params: {
-              muscleGroupId: this.selectedMuscleGroupId
+              muscleGroupId: muscleId
             }
           }
       ).then(response => {
@@ -236,17 +236,13 @@ export default {
       })
     },
 
-    // changeExTempByMuscleGroupId: function () {
-    //   sessionStorage.setItem('muscleGroupId', this.selectedMuscleGroupId)
-    //   this.getExTempByMuscleGroupId();
-    // },
+
 
     getAllMuscleGroups: function () {
       this.$http.get("/all/musclegroups")
           .then(response => {
             this.muscleGroups = response.data
-            // this.selectedMuscleGroupId = this.muscleGroups.muscleId
-            // sessionStorage.setItem('muscleGroupId', this.muscleGroups.muscleId)
+
             console.log(response.data)
           })
           .catch(error => {
