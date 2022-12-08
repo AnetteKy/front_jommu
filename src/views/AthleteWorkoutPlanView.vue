@@ -14,14 +14,8 @@
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td>Peagümnastika</td>
-              </tr>
-              <tr>
-                <td>Keha äratus</td>
-              </tr>
-              <tr>
-                <td colspan="2">...</td>
+              <tr v-for="name in workoutPlanNames" >
+                <td>{{name.workoutPlanName}}</td>
               </tr>
               </tbody>
             </table>
@@ -110,6 +104,9 @@ export default {
           ]
         },
       ],
+      workoutPlanNames: {
+        workoutPlanName: '',
+      }
     }
   },
 
@@ -129,16 +126,20 @@ export default {
       })
     },
 
-    // getAllWorkoutPlanInfo: function () {
-    //   this.$http.get("/workoutPlan/table/info")
-    //       .then(response => {
-    //         this.workoutPlanInfos = response.data
-    //         console.log(response.data)
-    //       })
-    //       .catch(error => {
-    //         console.log(error)
-    //       })
-    // },
+
+    getAllWorkoutPlanInfo: function () {
+      this.$http.get("/workoutplan/name", {
+            params: {
+              userId: sessionStorage.getItem('userId')
+            }
+          }
+      ).then(response => {
+        this.workoutPlanNames = response.data
+        console.log(response.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    },
 
     navigateToExerciseView: function () {
       this.$router.push({name: 'athleteExerciseRoute'})
@@ -147,6 +148,7 @@ export default {
 
   beforeMount() {
     this.getAllWorkoutPlanInfoByUser()
+    this.getAllWorkoutPlanInfo()
   }
 
 }
