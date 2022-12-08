@@ -5,6 +5,12 @@
     font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
+.motherFlex2 {
+    display: flex;
+    min-height: 100vh;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
 /*.borrrder {*/
 /*    border: dimgray ridge 3px;*/
 /*    border-radius: 1em;*/
@@ -36,9 +42,9 @@
     font-family: Tahoma sans-serif;
 }
 
-.athleteWorkoutPlanView {
-    background-image: url("");
-}
+/*.athleteWorkoutPlanView {*/
+/*    background-image: url("");*/
+/*}*/
 
 .addExerciseView {
     background-image: url("../photo/gym15.webp");
@@ -50,7 +56,9 @@
     background-image: url("../photo/gym14.webp");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
+
 
 .exerciseViewTable1 {
     background-color: white;
