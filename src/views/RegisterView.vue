@@ -3,7 +3,7 @@
     <div class="opacityregister container col-lg-4 d-flex align-items-center ">
       <div class="row d-flex flex-grow-1">
 
-        <h3 class="text-white mb-4"><em>Liitu juba täna!</em></h3>
+        <h3 class="text-white mb-5"><em>Liitu juba täna!</em></h3>
 
         <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default">Eesnimi</span>
@@ -35,7 +35,7 @@
 
 
 
-        <div class="input-group mb-3">
+        <div class="font-color input-group mb-3">
           <div class="text form-check m-2" v-for="singleGender in genders">
             <input v-model="registerRequest.gender" v-bind:value="singleGender.code"
                    class="shadow-lg form-check-input" type="radio"
