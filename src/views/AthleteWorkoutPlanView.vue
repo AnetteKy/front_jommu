@@ -36,10 +36,28 @@
 
             <h2 class="col m-5">Minu treeningkavad</h2>
 
-            <div>
-              <h5 class="col mb-3">Peagümnastika</h5>
-
-              <AthleteWorkoutPlanTable/>
+            <div v-for="workoutPlan in workoutPlanInfos">
+              <h5 class="col mb-3">{{ workoutPlan.workoutPlanName }}</h5>
+              <table class="table">
+                <tr>
+                  <thead class="table">
+                  <tr>
+                    <th scope="col">Harjutus</th>
+                    <th scope="col">Kordus</th>
+                    <th scope="col">Seeria</th>
+                    <th scope="col">Raskus</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr v-for="exercise in workoutPlan.exercises">
+                    <th scope="row">{{ exercise.exerciseTemplateName }}</th>
+                    <td>{{ exercise.reps }}</td>
+                    <td>{{ exercise.sets }}</td>
+                    <td>{{ exercise.weight }}</td>
+                  </tr>
+                  </tbody>
+                </tr>
+              </table>
 
               <div>
                 <button v-on:click="navigateToExerciseView" type="button" class="m-2 btn btn-outline-dark ">Muuda kava
@@ -67,43 +85,60 @@
 <script>
 
 import AthleteNavBar from "@/components/navbar/AthleteNavBar";
-import AthleteSavedWorkoutPlanTable from "@/components/workoutplan_table_saved/AthleteSavedWorkoutPlanTable";
 
 export default {
   name: "AthleteWorkoutPlanView",
-  components: {AthleteSavedWorkoutPlanTable, AthleteNavBar},
+  components: {AthleteNavBar},
 
   data: function () {
     return {
 
       workoutPlanInfos: [
         {
-          exerciseTableInfos: {
-            exerciseId: 0,
-            workoutPlanId: 0,
-            exerciseTemplateName: '',
-            reps: 0,
-            sets: 0,
-            weight: 0,
-            status: '',
-          },
-        }
+          workoutPlanId: 1,
+          workoutPlanName: 'Minu jalapäev',
+          exercises: [
+            {
+              exerciseId: 0,
+              exerciseTemplateId: 0,
+              exerciseTemplateName: 'kohuliased',
+              reps: 0,
+              sets: 0,
+              weight: 0,
+              status: '',
+            }
+          ]
+        },
       ],
     }
   },
 
   methods: {
 
-    getAllWorkoutPlanInfo: function () {
-      this.$http.get("/workoutPlan/table/info")
-          .then(response => {
-            this.workoutPlanInfos = response.data
-            console.log(response.data)
-          })
-          .catch(error => {
-            console.log(error)
-          })
+    getAllWorkoutPlanInfoByUser: function () {
+      this.$http.get("/workoutplan/table", {
+            params: {
+              userId: sessionStorage.getItem('userId')
+            }
+          }
+      ).then(response => {
+        this.workoutPlanInfos = response.data
+        console.log(response.data)
+      }).catch(error => {
+        console.log(error)
+      })
     },
+
+    // getAllWorkoutPlanInfo: function () {
+    //   this.$http.get("/workoutPlan/table/info")
+    //       .then(response => {
+    //         this.workoutPlanInfos = response.data
+    //         console.log(response.data)
+    //       })
+    //       .catch(error => {
+    //         console.log(error)
+    //       })
+    // },
 
     navigateToExerciseView: function () {
       this.$router.push({name: 'athleteExerciseRoute'})
@@ -111,7 +146,7 @@ export default {
   },
 
   beforeMount() {
-    this.getAllWorkoutPlanInfo()
+    this.getAllWorkoutPlanInfoByUser()
   }
 
 }
