@@ -2,7 +2,7 @@
   <div class="motherFlex adminView">
     <div class="bg-light bg-opacity-75  container col-lg-4 d-flex align-items-center ">
       <div class="col-md-12">
-        <h3>Lisa uus harjutus</h3>
+        <h3>Lisa harjutusele pilt</h3>
         <select v-on:change="getExTempPicture" v-model="pictureInfo.exerciseTempId" class="form-select mb-2"
                 aria-label="Default select example">
           <option selected disabled value="0">Vali harjutus</option>
@@ -23,11 +23,11 @@
         <div v-else>
           <img :src="pictureInfo.imgData" class="myPicSize">
         </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">Sisesta harjutuse kirjeldus</label>
-          <textarea class="form-control mb-2" id="exampleFormControlTextarea1" rows="5">{{exerciseTemplates.description}}</textarea>
-          <button v-on:click="addDescription" type="button" class="btn btn-primary mb-2">Salvesta kirjeldus</button>
-        </div>
+<!--        <div class="mb-3">-->
+<!--          <label for="exampleFormControlTextarea1" class="form-label">Sisesta harjutuse kirjeldus</label>-->
+<!--          <textarea class="form-control mb-2" id="exampleFormControlTextarea1" rows="5"></textarea>-->
+<!--          <button v-on:click="addDescription" type="button" class="btn btn-primary mb-2">Salvesta kirjeldus</button>-->
+<!--        </div>-->
       </div>
     </div>
   </div>
@@ -76,7 +76,6 @@ export default {
 
     setPicture: function (picture) {
       this.pictureInfo.imgData = picture
-      // sessionStorage.setItem('imgData', this.pictureInfo.imgData)
     },
 
     addPicture: function () {
