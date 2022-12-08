@@ -34,18 +34,20 @@
         <div class="row justify-content-around">
           <div class="col-8">
 
-            <h2 class="col m-5">Minu treeningkavad</h2>
+            <div class="col justify-content-center">
+              <h2 class="col mb-5"><u>Minu treeningkavad</u></h2>
+            </div>
 
-            <div v-for="workoutPlan in workoutPlanInfos">
-              <h5 class="col mb-3">{{ workoutPlan.workoutPlanName }}</h5>
+            <div class="mb-5" v-for="workoutPlan in workoutPlanInfos">
+              <h5 class="col mb-4"><u>{{ workoutPlan.workoutPlanName }}</u></h5>
               <table class="table">
                 <tr>
                   <thead class="table">
                   <tr>
-                    <th scope="col">Harjutus</th>
-                    <th scope="col">Kordus</th>
-                    <th scope="col">Seeria</th>
-                    <th scope="col">Raskus</th>
+                    <th class="col-5" scope="col">Harjutus</th>
+                    <th class="col-3" scope="col">Kordus</th>
+                    <th class="col-3" scope="col">Seeria</th>
+                    <th class="col-3" scope="col">Raskus</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -72,7 +74,7 @@
       </div>
 
       <div class="col-3 justify-content-end">
-        <button v-on:click="navigateToExerciseView" type="button" class="btn btn-dark btn-lg">+ Lisa
+        <button v-on:click="navigateToExerciseView" type="button" class="col-6 button-26">+ Lisa
           treeningkava
         </button>
       </div>

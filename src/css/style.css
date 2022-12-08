@@ -3,6 +3,7 @@
     min-height: 100vh;
     display: flex;
     font-family: Avenir, Helvetica, Arial, sans-serif;
+    color: #2c3e50;
 }
 
 .trashcan-icon {
@@ -12,6 +13,7 @@
 .flex2 {
     min-height: 100vh;
     font-family: Avenir, Helvetica, Arial, sans-serif;
+    color: #2c3e50;
 }
 
 /*.borrrder {*/
@@ -29,7 +31,7 @@
     background-repeat: no-repeat;
     background-size: cover;
  }.historyView {
-    background-image: url("../photo/history.jpeg");
+    background-image: url("../photo/historyview.webp");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -63,14 +65,22 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+
 }
 
 .opacityworkout {
-    background-color: rgba(227,233,237,0.65);
+    background-color: rgba(213,218,220,0.80);
     /*border: 2px rgba(71, 58, 67, 0.96) solid;*/
     padding: 2em;
     border-radius: 1.5em;
 }
+
+/*.opacityworkout2 {*/
+/*    background-color: rgba(193,210,215,0.75);*/
+/*    !*border: 2px rgba(71, 58, 67, 0.96) solid;*!*/
+/*    padding: 0.5rem;*/
+/*    border-radius: 0.5em;*/
+/*}*/
 
 .addExerciseView {
     background-image: url("../photo/gym15.webp");
@@ -109,8 +119,14 @@
 }
 
 .opacityregister {
-    background-color: rgba(88, 63, 80, 0.48);
+    background-color: rgba(217,213,208,0.20);
     border: 2px rgba(71, 58, 67, 0.96) solid;
+    border-radius: 1.5em;
+}
+
+.opacityhomeview {
+    background-color: rgba(120,125,118,0.25);
+    border: 2px rgba(176,175,165,0.92) solid;
     border-radius: 1.5em;
 }
 
@@ -135,6 +151,28 @@
     background-color: rgba(98,112,79,0.8);
     border: 1px solid #2A8387;
     border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-family: Avenir, Helvetica, Arial, sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 100%;
+    margin: 0;
+    outline: 0;
+    padding: 11px 15px 12px;
+    text-align: center;
+    transition: box-shadow .05s ease-in-out, opacity .05s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+}
+
+.button-26 {
+    background-color: rgba(66,35,47,0.92);
+    border: 1px solid #2A8387;
+    border-radius: 0.5em;
     box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
     color: #FFFFFF;
     cursor: pointer;

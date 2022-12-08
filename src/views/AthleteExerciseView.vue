@@ -1,73 +1,76 @@
 <template>
   <div class="motherFlex flex-column exerciseView">
     <AthleteNavBar/>
-    <div class="row justify-content-around m-1">
-      <div class="col-md-2">
-        <h6>Vali treeningkava</h6>
-        <select v-on:change="changeWorkoutPlan" v-model="selectedWorkoutPlanId" class="form-select "
-                aria-label="Default select example">
-          <option selected disabled value="0">Treeningkava nimi</option>
-          <option v-for="workoutPlan in workoutPlans" :key="workoutPlan.workoutPlanId"
-                  :value="workoutPlan.workoutPlanId">
-            {{ workoutPlan.workoutPlanName }}
-          </option>
-        </select>
+
+    <div class="mb-5 mt-5">
+      <div class="row justify-content-around mb-4">
+        <div class="col-md-2">
+          <h6><b>Vali treeningkava</b></h6>
+          <select v-on:change="changeWorkoutPlan" v-model="selectedWorkoutPlanId" class="form-select "
+                  aria-label="Default select example">
+            <option selected disabled value="0">Treeningkava nimi</option>
+            <option v-for="workoutPlan in workoutPlans" :key="workoutPlan.workoutPlanId"
+                    :value="workoutPlan.workoutPlanId">
+              {{ workoutPlan.workoutPlanName }}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <div class="row">
+            <h6><b>Soovid koostada uut treeningkava?</b></h6>
+          </div>
+          <div class="row input-group mb-2">
+            <input v-model="workoutPlanRequest.workoutPlanName" type="text" class="form-control" id="autoSizingInput"
+                   placeholder="Sisesta treeningkava nimi">
+          </div>
+          <div class="row col-lg-6">
+            <button v-on:click="addWorkoutPlanInfo" type="button" class="btn btn-success">
+              +LISA treeningkava
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="col-md-3">
-        <div class="row">
-          <h6>Soovid koostada uut treeningkava?</h6>
+
+      <div v-if="selectedWorkoutPlanId !== '0'" class="row justify-content-center mt-5 mb-5">
+        <div class="col-6 justify-content-center">
+          <h3 class="mb-5"><u>Hetkel koostamisel:</u></h3>
+
+          <AthleteWorkoutPlanTable :exercise-table-infos="exerciseTableInfos"
+                                   @deleteExerciseFromTableEvent="disableExerciseFromTable"
+          />
+
+          <div class="row col-2 offset-10">
+            <button v-on:click="navigateToWorkoutPlanView" type="button" class="btn btn-success ">VALMIS</button>
+          </div>
         </div>
-        <div class="row input-group mb-2">
-          <input v-model="workoutPlanRequest.workoutPlanName" type="text" class="form-control" id="autoSizingInput"
-                 placeholder="Sisesta treeningkava nimi">
-        </div>
-        <div class="row col-lg-6">
-          <button v-on:click="addWorkoutPlanInfo" type="button" class="btn btn-success">
-            +LISA treeningkava
+      </div>
+
+
+      <div v-if="selectedWorkoutPlanId !== '0'" class="row m-4">
+        <div class="col-3">
+          <h5 class="mb-3"><b>Filtreeri harjutusi</b></h5>
+          <button v-on:click="getAllExTempMuscleInfo" type="button"
+                  class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">KÕIK
+          </button>
+
+          <button v-for="muscleGroup in muscleGroups" :key="muscleGroup.muscleId" :value="muscleGroup.muscleId"
+                  v-model="selectedMuscleGroupId" v-on:click="getExTempByMuscleGroupId(muscleGroup.muscleId)"
+                  type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">
+            {{ muscleGroup.muscleName }}
           </button>
         </div>
-      </div>
-    </div>
 
-    <div v-if="selectedWorkoutPlanId !== '0'" class="row justify-content-center m-3">
-      <div class="col-6 justify-content-center">
-        <h4>Hetkel koostamisel:</h4>
+        <div class="col-md-5">
+          <h3 class="mb-3"><u>Harjutused</u></h3>
 
-        <AthleteWorkoutPlanTable :exercise-table-infos="exerciseTableInfos"
-                                 @deleteExerciseFromTableEvent="disableExerciseFromTable"
-        />
+          <ExerciseTable @clickNavigateToExerciseDescriptionEvent="clickNavigateToExerciseDescriptionView"
+                         :ex-temp-muscle-group-infos="exTempMuscleGroupInfos"
+                         @clickNavigateToAddExerciseEvent="navigateToAddExView"/>
 
-        <div class="row col-2 offset-10">
-          <button v-on:click="navigateToWorkoutPlanView" type="button" class="btn btn-success ">VALMIS</button>
         </div>
       </div>
+
     </div>
-
-
-    <div v-if="selectedWorkoutPlanId !== '0'" class="row m-4">
-      <div class="col-3">
-        <h5 class="mb-3">Filtreeri harjutusi</h5>
-        <button v-on:click="getAllExTempMuscleInfo" type="button"
-                class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">KÕIK
-        </button>
-
-        <button v-for="muscleGroup in muscleGroups" :key="muscleGroup.muscleId" :value="muscleGroup.muscleId"
-                v-model="selectedMuscleGroupId" v-on:click="getExTempByMuscleGroupId(muscleGroup.muscleId)"
-                type="button" class="btn btn-success d-grid gap-2 col-6 mb-2 mx-auto">
-          {{ muscleGroup.muscleName }}
-        </button>
-      </div>
-
-      <div class="col-md-5">
-        <h4 class="mb-3">Harjutused</h4>
-
-        <ExerciseTable @clickNavigateToExerciseDescriptionEvent="clickNavigateToExerciseDescriptionView"
-                       :ex-temp-muscle-group-infos="exTempMuscleGroupInfos"
-                       @clickNavigateToAddExerciseEvent="navigateToAddExView"/>
-
-      </div>
-    </div>
-
   </div>
 </template>
 
@@ -235,7 +238,6 @@ export default {
         console.log(error)
       })
     },
-
 
 
     getAllMuscleGroups: function () {

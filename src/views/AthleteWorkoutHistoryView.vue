@@ -2,11 +2,8 @@
   <div class="motherFlex historyView">
 
     <div class="motherFlex d-flex flex-grow-1 flex-column">
-      <div class="bg-light bg-opacity-75">
+      <div class="">
         <AthleteNavBar/>
-      </div>
-      <div class="bg-light bg-opacity-50">
-        <label class="">Ajalugu</label>
       </div>
     </div>
   </div>
