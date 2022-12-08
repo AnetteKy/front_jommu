@@ -1,7 +1,7 @@
 <template>
 
   <div class="motherFlex flex-column exerciseView">
-    <div class="card offset-lg-5" style="width: 24rem;">
+    <div class="card col-6 offset-3">
       <img v-if="descriptionInfos.imgData === null " src="../images/default.jpg" class="myPicSize">
       <img v-else :src="descriptionInfos.imgData" class="myPicSize">
 
@@ -20,7 +20,7 @@ export default {
   data: function () {
     return {
       descriptionInfos: {
-        exerciseTempId: this.$route.query.exerciseTempId,
+        exerciseTempId: '',
         exerciseTempName: '',
         description: '',
         imgData: ''
@@ -42,6 +42,7 @@ export default {
         console.log(error)
       })
     },
+
 
     navigateToExerciseView: function () {
       this.$router.push({
