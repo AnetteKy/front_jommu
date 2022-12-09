@@ -2,7 +2,7 @@
   <div class="motherFlex flex-column exerciseView">
     <AthleteNavBar/>
 
-    <div class="mb-5 mt-5 ms-2 me-2">
+    <div class="mb-5 ms-2 me-2">
       <div class="row justify-content-around mb-4 mt-5">
         <div class="col-md-2">
           <h6><b>Vali treeningkava</b></h6>

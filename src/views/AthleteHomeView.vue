@@ -2,9 +2,9 @@
   <div class="motherFlex flex-column athleteHomeView">
     <AthleteNavBar/>
 
-    <div class="opacityhomeview m-5">
+    <div class="opacityhomeview ms-5 me-5">
 
-      <div class="m-5">
+      <div class="m-4">
         <h1>Tere tulemast, {{ username }}</h1>
       </div>
       <div class="mb-4">

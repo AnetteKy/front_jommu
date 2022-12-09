@@ -1,6 +1,6 @@
 <template>
   <div class="motherFlex adminView">
-    <div class="bg-light bg-opacity-75  container col-lg-4 d-flex align-items-center ">
+    <div class="bg-light bg-opacity-75 container col-lg-4 d-flex align-items-center ">
       <div class="col-md-12">
         <h3>Lisa harjutusele pilt</h3>
         <select v-on:change="getExTempPicture" v-model="pictureInfo.exerciseTempId" class="form-select mb-2"

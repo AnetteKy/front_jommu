@@ -30,6 +30,7 @@
     background-image: url("../photo/admin.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 0.5em;
  }.historyView {
     background-image: url("../photo/historyview.webp");
     background-repeat: no-repeat;

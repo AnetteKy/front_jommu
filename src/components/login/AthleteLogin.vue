@@ -18,7 +18,7 @@
     <button v-on:click="athleteLogin" class="col-4 offset-4  button-29" type="submit">Logi sisse</button>
     <div class="row justify-content-center">
       <label class="mt-5"><b>Ei oma veel kontot?</b></label>
-      <button v-on:click="athleteRegister" type="button" class="btn btn-secondary btn-sm w-25 mb-5">Registreeri</button>
+      <button v-on:click="athleteRegister" type="button" class="btn btn-secondary btn-sm w-25 mb-5">Registreeri siin</button>
     </div>
   </div>
 </template>
